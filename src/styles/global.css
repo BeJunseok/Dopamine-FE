@@ -1,7 +1,135 @@
 @import "tailwindcss";
+/* --------------------------------------------- */
+/* Font: Pretendard
+   Reference: https://cactus.tistory.com/306 */
+/* --------------------------------------------- */
 
-html,
-body {
-  width: 100%;
-  height: 100%;
+
+/* 커스텀 디자인 토큰 정의 */
+@layer base {
+  :root {
+
+  /* --------------------------------------------- */
+  /* Colors */
+  /* --------------------------------------------- */
+  --color-mainpink: #fe0a58;
+  --color-lightpink: #fee6ee;
+
+  --color-green01: #22c14d;
+  --color-lightgreen01: #e5ffe6;
+
+  --color-orange01: #fc6d1e;
+  --color-lightorange01: #feeae6;
+
+  --color-white: #ffffff;
+
+  --color-grey00: #fafafa;
+  --color-grey01: #f5f5f5;
+  --color-grey02: #f3f4f6;
+  --color-grey03: #ecebec;
+  --color-grey04: #e5e5e5;
+  --color-grey05: #dfdfdf;
+  --color-grey06: #d9d9d9;
+  --color-grey09: #d2d2d2;
+  --color-grey10: #cecece;
+  --color-grey11: #c6c6c6;
+  --color-grey12: #c4c4c4;
+  --color-grey13: #ababab;
+  --color-grey14: #a3a3a3;
+  --color-grey15: #999999;
+  --color-grey16: #8d8d8d;
+
+  --color-bluegrey01: #f2f3f7;
+  --color-bluegrey02: #e5e7eb;
+  --color-bluegrey03: #d1d5db;
+  --color-bluegrey04: #adb8bc;
+  --color-bluegrey05: #9ca3af;
+  --color-bluegrey06: #9ba1ad;
+  --color-bluegrey07: #878a95;
+  --color-bluegrey08: #6b7280;
+  --color-bluegrey09: #374151;
+  --color-bluegrey10: #111827;
+
+  --color-darkgrey01: #737373;
+  --color-darkgrey02: #525252;
+  --color-darkgrey03: #404040;
+  --color-darkgrey04: #262626;
+  --color-darkgrey05: #171717;
+
+  /* --------------------------------------------- */
+  /* Typography */
+  /* --------------------------------------------- */
+  --font-family-base: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+
+  /* Text sizes, weights, line heights */
+  --font-med30-size: 30px;
+  --font-med30-weight: 500;
+  --font-med30-lineheight: 120%;
+
+  --font-bold24-size: 24px;
+  --font-bold24-weight: 700;
+  --font-bold24-lineheight: 150%;
+
+  --font-bold20-size: 20px;
+  --font-bold20-weight: 700;
+  --font-bold20-lineheight: 150%;
+
+  --font-reg20-size: 20px;
+  --font-reg20-weight: 400;
+  --font-reg20-lineheight: 150%;
+
+  --font-med18-size: 18px;
+  --font-med18-weight: 500;
+  --font-med18-lineheight: 170%;
+
+  --font-bold16-size: 16px;
+  --font-bold16-weight: 700;
+  --font-bold16-lineheight: 170%;
+
+  --font-med16-size: 16px;
+  --font-med16-weight: 500;
+  --font-med16-lineheight: 150%;
+
+  --font-reg16-size: 16px;
+  --font-reg16-weight: 400;
+  --font-reg16-lineheight: 170%;
+
+  --font-semibold14-size: 14px;
+  --font-semibold14-weight: 600;
+  --font-semibold14-lineheight: 170%;
+
+  --font-med14-size: 14px;
+  --font-med14-weight: 500;
+  --font-med14-lineheight: 150%;
+
+  --font-med13-size: 13px;
+  --font-med13-weight: 500;
+  --font-med13-lineheight: 130%;
+
+  --font-reg14-size: 14px;
+  --font-reg14-weight: 400;
+  --font-reg14-lineheight: 150%;
+
+  --font-reg12-size: 12px;
+  --font-reg12-weight: 400;
+  --font-reg12-lineheight: 150%;
+
+  --letter-spacing-default: 0%;
+}
+
+
+.text-med30 {
+  font-family: var(--font-family-base);
+  font-size: var(--font-med30-size);
+  font-weight: var(--font-med30-weight);
+  line-height: var(--font-med30-lineheight);
+}
+
+.text-bold24 {
+  font-family: var(--font-family-base);
+  font-size: var(--font-bold24-size);
+  font-weight: var(--font-bold24-weight);
+  line-height: var(--font-bold24-lineheight);
+}
+
 }
