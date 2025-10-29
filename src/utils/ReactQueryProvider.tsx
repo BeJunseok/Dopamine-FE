@@ -10,9 +10,8 @@ export default function ReactQueryProvider({
     new QueryClient({
       defaultOptions: {
         queries: {
-          refetchOnWindowFocus: true,
-          refetchOnReconnect: true,
-          refetchOnMount: "always",
+          refetchOnWindowFocus: false,
+          refetchOnMount: false,
           retry: 1,
         },
       },

@@ -1,11 +1,13 @@
-type Props = {
-  children: React.ReactNode;
-};
+import { Outlet } from "react-router-dom";
 
-export default function MainLayout({ children }: Props) {
+const MainLayout = () => {
   return (
     <div className="min-h-[100dvh] w-screen bg-black flex justify-center">
-      <main className="w-full max-w-[375px] bg-white">{children}</main>
+      <main className="w-full max-w-[375px] bg-white">
+        <Outlet />
+      </main>
     </div>
   );
-}
+};
+
+export default MainLayout;
