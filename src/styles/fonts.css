@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("../assets/fonts/PretendardVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --text-med30: 30px;
+  --text-med30--font-weight: 500;
+  --text-med30--font-lineheight: 120%;
+  --text-med30--letter-spacing: 0;
+
+  --text-bold24-size: 24px;
+  --text-bold24-weight: 700;
+  --text-bold24-lineheight: 150%;
+  --text-bold24--letter-spacing: 0;
+
+  --text-bold20-size: 20px;
+  --text-bold20-weight: 700;
+  --text-bold20-lineheight: 150%;
+  --text-bold20--letter-spacing: 0;
+
+  --text-reg20-size: 20px;
+  --text-reg20-weight: 400;
+  --text-reg20-lineheight: 150%;
+  --text-reg20--letter-spacing: 0;
+
+  --text-med18-size: 18px;
+  --text-med18-weight: 500;
+  --text-med18-lineheight: 170%;
+  --text-med18--letter-spacing: 0;
+
+  --text-bold16-size: 16px;
+  --text-bold16-weight: 700;
+  --text-bold16-lineheight: 170%;
+  --text-bold16--letter-spacing: 0;
+
+  --text-med16-size: 16px;
+  --text-med16-weight: 500;
+  --text-med16-lineheight: 150%;
+  --text-med16--letter-spacing: 0;
+
+  --text-reg16-size: 16px;
+  --text-reg16-weight: 400;
+  --text-reg16-lineheight: 170%;
+  --text-reg16--letter-spacing: 0;
+
+  --text-semibold14-size: 14px;
+  --text-semibold14-weight: 600;
+  --text-semibold14-lineheight: 170%;
+  --text-semibold14--letter-spacing: 0;
+
+  --text-med14-size: 14px;
+  --text-med14-weight: 500;
+  --text-med14-lineheight: 150%;
+  --text-med14--letter-spacing: 0;
+
+  --text-med13-size: 13px;
+  --text-med13-weight: 500;
+  --text-med13-lineheight: 130%;
+  --text-med13--letter-spacing: 0;
+
+  --text-reg14-size: 14px;
+  --text-reg14-weight: 400;
+  --text-reg14-lineheight: 150%;
+  --text-reg14--letter-spacing: 0;
+
+  --text-reg12-size: 12px;
+  --text-reg12-weight: 400;
+  --text-reg12-lineheight: 150%;
+  --text-reg12--letter-spacing: 0;
+}
