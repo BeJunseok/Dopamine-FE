@@ -10,9 +10,9 @@ import "swiper/css/thumbs";
 
 import "@/styles/imageSwiper.css";
 
-type ItemImageProps = {
+interface ItemImageProps {
   images: string[];
-};
+}
 
 const ItemImage = ({ images }: ItemImageProps) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
