@@ -1,17 +1,17 @@
 @import "tailwindcss";
-/* --------------------------------------------- */
-/* Font: Pretendard
-   Reference: https://cactus.tistory.com/306 */
-/* --------------------------------------------- */
+@import "./fonts.css";
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
 
-/* 커스텀 디자인 토큰 정의 */
-@layer base {
-  :root {
+:root {
+  font-family: "Pretendard", sans-serif, system-ui;
+}
 
-  /* --------------------------------------------- */
-  /* Colors */
-  /* --------------------------------------------- */
+@theme {
   --color-mainpink: #fe0a58;
   --color-lightpink: #fee6ee;
 
@@ -55,81 +55,4 @@
   --color-darkgrey03: #404040;
   --color-darkgrey04: #262626;
   --color-darkgrey05: #171717;
-
-  /* --------------------------------------------- */
-  /* Typography */
-  /* --------------------------------------------- */
-  --font-family-base: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-
-  /* Text sizes, weights, line heights */
-  --font-med30-size: 30px;
-  --font-med30-weight: 500;
-  --font-med30-lineheight: 120%;
-
-  --font-bold24-size: 24px;
-  --font-bold24-weight: 700;
-  --font-bold24-lineheight: 150%;
-
-  --font-bold20-size: 20px;
-  --font-bold20-weight: 700;
-  --font-bold20-lineheight: 150%;
-
-  --font-reg20-size: 20px;
-  --font-reg20-weight: 400;
-  --font-reg20-lineheight: 150%;
-
-  --font-med18-size: 18px;
-  --font-med18-weight: 500;
-  --font-med18-lineheight: 170%;
-
-  --font-bold16-size: 16px;
-  --font-bold16-weight: 700;
-  --font-bold16-lineheight: 170%;
-
-  --font-med16-size: 16px;
-  --font-med16-weight: 500;
-  --font-med16-lineheight: 150%;
-
-  --font-reg16-size: 16px;
-  --font-reg16-weight: 400;
-  --font-reg16-lineheight: 170%;
-
-  --font-semibold14-size: 14px;
-  --font-semibold14-weight: 600;
-  --font-semibold14-lineheight: 170%;
-
-  --font-med14-size: 14px;
-  --font-med14-weight: 500;
-  --font-med14-lineheight: 150%;
-
-  --font-med13-size: 13px;
-  --font-med13-weight: 500;
-  --font-med13-lineheight: 130%;
-
-  --font-reg14-size: 14px;
-  --font-reg14-weight: 400;
-  --font-reg14-lineheight: 150%;
-
-  --font-reg12-size: 12px;
-  --font-reg12-weight: 400;
-  --font-reg12-lineheight: 150%;
-
-  --letter-spacing-default: 0%;
-}
-
-
-.text-med30 {
-  font-family: var(--font-family-base);
-  font-size: var(--font-med30-size);
-  font-weight: var(--font-med30-weight);
-  line-height: var(--font-med30-lineheight);
-}
-
-.text-bold24 {
-  font-family: var(--font-family-base);
-  font-size: var(--font-bold24-size);
-  font-weight: var(--font-bold24-weight);
-  line-height: var(--font-bold24-lineheight);
-}
-
 }
