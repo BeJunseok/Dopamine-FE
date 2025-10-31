@@ -6,68 +6,68 @@
 }
 
 @theme {
-  —text-med30: 30px;
-  —text-med30—font-weight: 500;
-  —text-med30—line-height: 120%;
-  —text-med30—letter-spacing: 0;
+  --text-med30: 30px;
+  --text-med30--font-weight: 500;
+  --text-med30--line-height: 120%;
+  --text-med30--letter-spacing: 0;
 
-  —text-bold24: 24px;
-  —text-bold24—font-weight: 700;
-  —text-bold24—line-height: 150%;
-  —text-bold24—letter-spacing: 0;
+  --text-bold24: 24px;
+  --text-bold24--font-weight: 700;
+  --text-bold24--line-height: 150%;
+  --text-bold24--letter-spacing: 0;
 
-  —text-bold20: 20px;
-  —text-bold20—font-weight: 700;
-  —text-bold20—line-height: 150%;
-  —text-bold20—letter-spacing: 0;
+  --text-bold20: 20px;
+  --text-bold20--font-weight: 700;
+  --text-bold20--line-height: 150%;
+  --text-bold20--letter-spacing: 0;
 
-  —text-reg20: 20px;
-  —text-reg20—font-weight: 400;
-  —text-reg20—line-height: 150%;
-  —text-reg20—letter-spacing: 0;
+  --text-reg20: 20px;
+  --text-reg20--font-weight: 400;
+  --text-reg20--line-height: 150%;
+  --text-reg20--letter-spacing: 0;
 
-  —text-med18: 18px;
-  —text-med18—font-weight: 500;
-  —text-med18—line-height: 170%;
-  —text-med18—letter-spacing: 0;
+  --text-med18: 18px;
+  --text-med18--font-weight: 500;
+  --text-med18--line-height: 170%;
+  --text-med18--letter-spacing: 0;
 
-  —text-bold16: 16px;
-  —text-bold16—font-weight: 700;
-  —text-bold16—line-height: 170%;
-  —text-bold16—letter-spacing: 0;
+  --text-bold16: 16px;
+  --text-bold16--font-weight: 700;
+  --text-bold16--line-height: 170%;
+  --text-bold16--letter-spacing: 0;
 
-  —text-med16: 16px;
-  —text-med16—font-weight: 500;
-  —text-med16—line-height: 150%;
-  —text-med16—letter-spacing: 0;
+  --text-med16: 16px;
+  --text-med16--font-weight: 500;
+  --text-med16--line-height: 150%;
+  --text-med16--letter-spacing: 0;
 
-  —text-reg16: 16px;
-  —text-reg16—font-weight: 400;
-  —text-reg16—line-height: 170%;
-  —text-reg16—letter-spacing: 0;
+  --text-reg16: 16px;
+  --text-reg16--font-weight: 400;
+  --text-reg16--line-height: 170%;
+  --text-reg16--letter-spacing: 0;
 
-  —text-semibold14: 14px;
-  —text-semibold14—font-weight: 600;
-  —text-semibold14—line-height: 170%;
-  —text-semibold14—letter-spacing: 0;
+  --text-semibold14: 14px;
+  --text-semibold14--font-weight: 600;
+  --text-semibold14--line-height: 170%;
+  --text-semibold14--letter-spacing: 0;
 
-  —text-med14: 14px;
-  —text-med14—font-weight: 500;
-  —text-med14—line-height: 150%;
-  —text-med14—letter-spacing: 0;
+  --text-med14: 14px;
+  --text-med14--font-weight: 500;
+  --text-med14--line-height: 150%;
+  --text-med14--letter-spacing: 0;
 
-  —text-med13: 13px;
-  —text-med13—font-weight: 500;
-  —text-med13—line-height: 130%;
-  —text-med13—letter-spacing: 0;
+  --text-med13: 13px;
+  --text-med13--font-weight: 500;
+  --text-med13--line-height: 130%;
+  --text-med13--letter-spacing: 0;
 
-  —text-reg14: 14px;
-  —text-reg14—font-weight: 400;
-  —text-reg14—line-height: 150%;
-  —text-reg14—letter-spacing: 0;
+  --text-reg14: 14px;
+  --text-reg14--font-weight: 400;
+  --text-reg14--line-height: 150%;
+  --text-reg14--letter-spacing: 0;
 
-  —text-reg12: 12px;
-  —text-reg12—font-weight: 400;
-  —text-reg12—line-height: 150%;
-  —text-reg12—letter-spacing: 0;
+  --text-reg12: 12px;
+  --text-reg12--font-weight: 400;
+  --text-reg12--line-height: 150%;
+  --text-reg12--letter-spacing: 0;
 }
