@@ -1,7 +1,7 @@
-import ItemsDetailSection from "@/components/item/detail/ItemDetailSection";
-import ItemHeader from "@/components/item/detail/ItemHeader";
-import PriceBox from "@/components/item/detail/PriceBox";
-import SellerInfo from "@/components/item/detail/SellerInfo";
+import ItemsDetailSection from "@/components/item/detail/itemCard/ItemDetailSection";
+import ItemHeader from "@/components/item/detail/itemCard/ItemHeader";
+import PriceBox from "@/components/item/detail/itemCard/PriceBox";
+import SellerInfo from "@/components/item/detail/itemCard/SellerInfo";
 import { useItemCardState } from "@/hooks/useItemCardState";
 import type { ItemCardProps } from "@/types/item/detail/ItemCard.type";
 

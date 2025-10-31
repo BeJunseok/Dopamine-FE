@@ -1,6 +1,6 @@
-import Header from "@/components/item/detail/Header";
-import ItemCard from "@/components/item/detail/ItemCard";
-import ItemImage from "@/components/item/detail/ItemImage";
+import Header from "@/components/item/detail/header/Header";
+import ItemImage from "@/components/item/detail/image/ItemImage";
+import ItemCard from "@/components/item/detail/itemCard/ItemCard";
 import { images, items } from "@/mock/itemDetail";
 
 const ItemDetailPage = () => {
