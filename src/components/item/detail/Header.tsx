@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full h-[60px] flex items-center">
+    <div className="w-full h-[60px] flex items-center bg-white">
       <ChevronLeft className="pl-3 cursor-pointer" onClick={handleBack} />
     </div>
   );
