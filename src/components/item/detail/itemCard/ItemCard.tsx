@@ -12,7 +12,7 @@ const ItemCard = ({ item, userId }: ItemCardProps) => {
     useItemCardState({ item, userId });
 
   return (
-    <div className="bg-white py-4">
+    <div className="bg-white py-4 mb-2">
       <div className="mx-4">
         <ItemHeader isLive={isLive} endsAt={item.endsAt} title={item.title} />
         <PriceBox

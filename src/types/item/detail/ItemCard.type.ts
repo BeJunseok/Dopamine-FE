@@ -1,6 +1,6 @@
 export interface ItemData {
   title: string; // 상품명
-  state: "SCHEDULED" | "RUNNING" | "ENDED" | "CANCELED"; // 경매 상태
+  state: "RUNNING" | "ENDED"; // 경매 상태
   endsAt: string; // 경매 종료시간
   currentPrice: number; // 상품 가격
   bidCount: number; // 입찰자 수

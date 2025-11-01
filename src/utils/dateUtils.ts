@@ -1,7 +1,10 @@
-import { intervalToDuration } from "date-fns";
+import { formatDistanceToNow, intervalToDuration } from "date-fns";
+import { ko } from "date-fns/locale";
 
-export const formatTimeLeft = (endsAt: string) => {
-  const endDate = new Date(endsAt);
+export const formatTimeLeft = (dateStr: string) => {
+  if (!dateStr) return;
+
+  const endDate = new Date(dateStr);
   const now = new Date();
 
   if (endDate.getTime() <= now.getTime()) return "";
@@ -18,4 +21,19 @@ export const formatTimeLeft = (endsAt: string) => {
   }
 
   return `${hours}시간 ${minutes}분 ${seconds}초`;
+};
+
+export const formatTimeAgo = (dateStr: string) => {
+  if (!dateStr) return;
+
+  const date = new Date(dateStr);
+  const now = new Date();
+
+  if (isNaN(date.getTime())) return "";
+
+  const diff = now.getTime() - date.getTime();
+  if (diff < 60 * 1000) return "방금 전"; // 1분 미만
+
+  const formatted = formatDistanceToNow(date, { locale: ko });
+  return formatted.replace(/^약\s*/, "") + " 전";
 };
