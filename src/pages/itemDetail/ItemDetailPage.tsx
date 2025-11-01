@@ -2,7 +2,16 @@ import BidHistoryList from "@/components/item/detail/bidHistory/BidHistoryList";
 import Header from "@/components/item/detail/header/Header";
 import ItemCard from "@/components/item/detail/itemCard/ItemCard";
 import ItemImage from "@/components/item/detail/itemImage/ItemImage";
-import { mockBids, mockImages, mockItems } from "@/mock/itemDetail";
+import QnaList from "@/components/item/detail/qna/QnaList";
+import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
+
+const handleAskQuestion = () => {
+  return;
+};
+
+const handleReply = () => {
+  return;
+};
 
 const ItemDetailPage = () => {
   return (
@@ -15,6 +24,12 @@ const ItemDetailPage = () => {
         bids={mockBids}
         userId={1}
         totalBidCount={7}
+      />
+      <QnaList
+        qnaList={mockQna}
+        isSeller={false}
+        onAskQuestion={handleAskQuestion}
+        onReply={handleReply}
       />
     </div>
   );

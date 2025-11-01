@@ -91,3 +91,27 @@ export const mockBids = [
     bidAt: "2025-11-04T15:25:00Z",
   },
 ];
+
+export const mockQna = [
+  {
+    id: 101,
+    name: "오아시스",
+    image:
+      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+    text: "자켓의 가슴둘레는 얼마인가요?",
+    createdAt: "2025-10-04T15:25:00Z",
+    answer: {
+      text: "평평하게 놓았을 떄 가슴둘레는 42인치입니다!",
+      createdAt: "2025-10-28T15:25:00Z",
+    },
+  },
+  {
+    id: 102,
+    name: "마이너스의 손",
+    image:
+      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+    text: "재킷에 수선이나 패치가 있나요?",
+    createdAt: "2025-10-31T15:25:00Z",
+    answer: null,
+  },
+];
