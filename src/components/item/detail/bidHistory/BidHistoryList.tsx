@@ -41,7 +41,7 @@ const BidHistoryList = ({
         {!showAll && totalBidCount > 4 && (
           <button
             onClick={() => setShowAll(true)}
-            className="w-full mt-4 py-2 text-center text-med14 text-darkgrey04 cursor-pointer hover:bg-grey04 rounded-lg"
+            className="w-full mt-4 py-2 text-center text-reg14 text-darkgrey02 cursor-pointer hover:bg-grey04 rounded-lg"
           >
             모든 입찰 보기 ({totalBidCount})
           </button>

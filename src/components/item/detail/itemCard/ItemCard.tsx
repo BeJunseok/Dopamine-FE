@@ -2,14 +2,17 @@ import ItemsDetailSection from "@/components/item/detail/itemCard/ItemDetailSect
 import ItemHeader from "@/components/item/detail/itemCard/ItemHeader";
 import PriceBox from "@/components/item/detail/itemCard/PriceBox";
 import SellerInfo from "@/components/item/detail/itemCard/SellerInfo";
-import { useItemCardState } from "@/hooks/useItemCardState";
 import type { ItemCardProps } from "@/types/item/detail/ItemCard.type";
 
-const ItemCard = ({ item, userId }: ItemCardProps) => {
+const ItemCard = ({
+  item,
+  isLive,
+  isEnded,
+  viewState,
+  depositAmount,
+  hasBid,
+}: ItemCardProps) => {
   const { item: itemDetails, seller } = item;
-
-  const { isLive, isEnded, viewState, depositAmount, hasBid } =
-    useItemCardState({ item, userId });
 
   return (
     <div className="bg-white py-4 mb-2">

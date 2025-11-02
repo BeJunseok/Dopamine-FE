@@ -1,8 +1,9 @@
+import { ViewState } from "@/types/item/detail/ItemCard.type";
 import { formatPrice } from "@/utils/priceUtils";
 import clsx from "clsx";
 
 interface PriceBoxProps {
-  viewState: "LIVE" | "LIVE_BIDDING" | "WON" | "LOST" | "ENDED";
+  viewState: ViewState;
   isEnded: boolean;
   currentPrice: number;
   bidCount: number;

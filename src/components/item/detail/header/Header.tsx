@@ -9,8 +9,11 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full h-[60px] flex items-center bg-white">
-      <ChevronLeft className="pl-3 cursor-pointer" onClick={handleBack} />
+    <div className="w-full h-[40px] flex items-center bg-white">
+      <ChevronLeft
+        className="pl-3 cursor-pointer w-10 h-10"
+        onClick={handleBack}
+      />
     </div>
   );
 };

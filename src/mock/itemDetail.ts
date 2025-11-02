@@ -16,7 +16,7 @@ export const mockItems: ItemData = {
   currentPrice: 100220, // 상품 가격
   bidCount: 7, // 입찰자 수
   myPrice: 42000, // 내 입찰가
-  winnerId: 2, // 낙찰자
+  winnerId: 1, // 낙찰자
   description:
     "1980년대 정통 빈티지 가죽 재킷입니다. 최소한의 사용감만 있는 최상의 컨디션입니다. 오리지널 하드웨어와 클래식한 모터사이클 스타일이 특징입니다. 미디엄 사이즈입니다. 수집가나 시대를 초월하는 아이템을 찾는 모든 분께 완벽한 선택입니다.", // 상품 설명
   item: {

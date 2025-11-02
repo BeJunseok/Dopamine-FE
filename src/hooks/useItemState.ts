@@ -1,19 +1,24 @@
-import type { ItemCardProps } from "@/types/item/detail/ItemCard.type";
+import type { ItemData } from "@/types/item/detail/ItemCard.type";
+import { ViewState } from "@/types/item/detail/ItemCard.type";
 
-type ViewState = "LIVE" | "LIVE_BIDDING" | "WON" | "LOST" | "ENDED";
+interface UseItemStateProps {
+  item: ItemData;
+  userId: number;
+}
 
-export interface ItemCardState {
+export interface ItemState {
   isLive: boolean;
   isEnded: boolean;
   viewState: ViewState;
   depositAmount: number;
   hasBid: boolean;
+  isSeller: boolean;
 }
 
-export const useItemCardState = ({
+export const useItemState = ({
   item,
   userId,
-}: ItemCardProps): ItemCardState => {
+}: UseItemStateProps): ItemState => {
   const isSeller = item.seller.id === userId;
   const hasBid = item.myPrice !== null && item.myPrice > 0;
   const isWinner = item.winnerId === userId;
@@ -21,8 +26,8 @@ export const useItemCardState = ({
   const isEnded = item.state === "ENDED";
 
   /**
-   * LIVE : 입찰 안 함
-   * LIVE_BIDDING : 입찰함
+   * LIVE : 입찰 안 함(경매중)
+   * LIVE_BIDDING : 입찰함(경매중)
    * WON : 낙찰됨
    * LOST : 낙찰 실패
    * ENDED : 경매 종료
@@ -47,5 +52,6 @@ export const useItemCardState = ({
     viewState,
     depositAmount,
     hasBid,
+    isSeller,
   };
 };

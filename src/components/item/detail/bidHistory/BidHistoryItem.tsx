@@ -1,4 +1,4 @@
-import TrophyIcon from "@/assets/svgs/item/detail/trophy.svg?react";
+import { Trophy } from "@/assets/svgs/item/detail";
 import { BidHistoryItemProps } from "@/types/item/detail/BidHistory.type";
 import { formatTimeAgo } from "@/utils/dateUtils";
 import { formatPrice } from "@/utils/priceUtils";
@@ -15,7 +15,7 @@ const BidHistoryItem = ({
     if (isWinner) {
       return (
         <div className="text-mainpink w-7 h-7 flex items-center justify-center flex-shrink-0 overflow-visible">
-          <TrophyIcon className="w-7 h-6 -translate-x-1" />
+          <Trophy className="w-7 h-6 -translate-x-1" />
         </div>
       );
     }
