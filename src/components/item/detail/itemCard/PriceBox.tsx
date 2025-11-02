@@ -37,12 +37,12 @@ const PriceBox = ({
             {isEnded ? "최종 낙찰가" : "현재 최고 입찰가"}
           </div>
           {viewState === "WON" && (
-            <div className="flex items-center justify-center w-16 h-6 rounded-full bg-lightpink text-mainpink text-med13">
+            <div className="flex items-center justify-center w-16 h-6 rounded-full bg-lightpink text-mainpink text-med13 leading-none">
               낙찰 성공
             </div>
           )}
           {viewState === "LOST" && (
-            <div className="flex items-center justify-center w-16 h-6 rounded-full bg-grey03 text-darkgrey05 text-med13">
+            <div className="flex items-center justify-center w-16 h-6 rounded-full bg-grey03 text-darkgrey05 text-med13 leading-none">
               낙찰 실패
             </div>
           )}

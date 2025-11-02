@@ -78,8 +78,8 @@ const Footer = ({
   }
 
   return (
-    <div className="sticky bottom-0 w-[375px] bg-white p-4">
-      <div className="">{content}</div>
+    <div className="sticky bottom-0 w-full bg-white p-4">
+      <div>{content}</div>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const BidHistoryItem = ({
 
     if (isCurrentTop) {
       return (
-        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-mainpink text-white text-reg12 mr-2">
+        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-darkgrey05 text-white text-reg12 mr-2">
           1
         </div>
       );
@@ -77,11 +77,11 @@ const BidHistoryItem = ({
   return (
     <div
       className={clsx(
-        "flex items-center justify-center p-3 rounded-lg border",
+        "flex items-center justify-center p-3 rounded-lg border border-grey04",
         {
-          "bg-lightpink border-mainpink": isWinner,
-          "bg-grey00 border-grey04": !isWinner && isMybid,
-          "bg-white border-grey04": !isWinner && !isMybid,
+          "bg-lightpink": isMybid, // 내 입찰
+          "border-mainpink": isWinner, // 경매 종료 - 1등
+          "bg-grey00 ": isCurrentTop, // 경매중 - 1등
         }
       )}
     >
