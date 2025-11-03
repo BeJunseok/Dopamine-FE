@@ -4,19 +4,13 @@ import Header from "@/components/item/detail/header/Header";
 import ItemCard from "@/components/item/detail/itemCard/ItemCard";
 import ItemImage from "@/components/item/detail/itemImage/ItemImage";
 import ConfirmModal from "@/components/item/detail/modal/ConfirmModal";
+import QnaInputBar from "@/components/item/detail/qna/QnaInputBar";
 import QnaList from "@/components/item/detail/qna/QnaList";
 import { useItemState } from "@/hooks/useItemState";
 import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
+import { QnaData } from "@/types/item/detail/Qna.type";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const handleAskQuestion = () => {
-  return;
-};
-
-const handleReply = () => {
-  return;
-};
 
 const handleBidClick = () => {
   alert("입찰하기");
@@ -28,18 +22,76 @@ const ItemDetailPage = () => {
   const { isLive, isEnded, viewState, depositAmount, hasBid, isSeller } =
     useItemState({ item, userId });
 
+  // 모달
   const [isChatModalOpen, setChatModalOpen] = useState(false);
   const [isRejectModalOpen, setRejectModalOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Q&A 질문/답변
+  const [qnaList, setQnaList] = useState<QnaData[]>(mockQna);
+  const [isAsking, setIsAsking] = useState(false);
+  const [replyingToId, setReplyingToId] = useState<number | null>(null);
+
+  // 채팅하기
   const handleConfirmChat = () => {
     setChatModalOpen(false);
     alert("채팅방으로 이동");
   };
 
+  // 구매 거부
   const handleConfirmReject = () => {
     setRejectModalOpen(false);
     navigate("/");
+  };
+
+  // 질문하기
+  const handleAskQuestion = () => {
+    setIsAsking(true);
+    setReplyingToId(null);
+  };
+
+  // 답변 달기
+  const handleStartReply = (questionId: number) => {
+    setReplyingToId(questionId);
+    setIsAsking(false);
+  };
+
+  // 답변 취소 클릭시
+  const handleCancelReply = () => {
+    setReplyingToId(null);
+  };
+
+  // 새 질문 제출
+  const handleQuestionSubmit = (questionText: string) => {
+    // 암시 객체
+    const newQuestion: QnaData = {
+      id: new Date().getTime(),
+      name: "My",
+      image: "",
+      text: questionText,
+      createdAt: new Date().toString(),
+      answer: null,
+    };
+
+    setQnaList(prevList => [...prevList, newQuestion]);
+
+    setIsAsking(false);
+  };
+
+  // 답변 제출
+  const handleReplySubmit = (questionId: number, answerText: string) => {
+    const newAnswer = {
+      text: answerText,
+      createdAt: new Date().toString(),
+    };
+
+    setQnaList(prevList =>
+      prevList.map(qna =>
+        qna.id === questionId ? { ...qna, answer: newAnswer } : qna
+      )
+    );
+
+    setReplyingToId(null);
   };
 
   return (
@@ -61,18 +113,30 @@ const ItemDetailPage = () => {
         totalBidCount={7}
       />
       <QnaList
-        qnaList={mockQna}
+        qnaList={qnaList}
         isSeller={isSeller}
+        replyingToId={replyingToId}
         onAskQuestion={handleAskQuestion}
-        onReply={handleReply}
+        onStartReply={handleStartReply}
+        onCancelReply={handleCancelReply}
+        onReplySubmit={handleReplySubmit}
       />
-      <Footer
-        viewState={viewState}
-        isSeller={isSeller}
-        onBidClick={handleBidClick}
-        onChatClick={() => setChatModalOpen(true)}
-        onRejectBuyClick={() => setRejectModalOpen(true)}
-      />
+
+      {/* 질문하기를 누르면 Footer X */}
+      {isAsking ? (
+        <QnaInputBar
+          onSubmit={handleQuestionSubmit}
+          onClose={() => setIsAsking(false)}
+        />
+      ) : (
+        <Footer
+          viewState={viewState}
+          isSeller={isSeller}
+          onBidClick={handleBidClick}
+          onChatClick={() => setChatModalOpen(true)}
+          onRejectBuyClick={() => setRejectModalOpen(true)}
+        />
+      )}
 
       {/* 채팅 모달 */}
       <ConfirmModal

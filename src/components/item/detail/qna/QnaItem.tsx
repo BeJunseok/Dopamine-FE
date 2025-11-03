@@ -1,9 +1,66 @@
 import { QnaItemProps } from "@/types/item/detail/Qna.type";
 import { formatTimeAgo } from "@/utils/dateUtils";
 import clsx from "clsx";
+import { useState } from "react";
 
-const QnaItem = ({ qna, isSeller, onReply }: QnaItemProps) => {
+const QnaItem = ({
+  qna,
+  isSeller,
+  isReplying,
+  onStartReply,
+  onCancelReply,
+  onReplySubmit,
+}: QnaItemProps) => {
   const hasAnswer = !!qna.answer;
+  const [replyText, setReplyText] = useState("");
+
+  const renderRelpyForm = () => (
+    <div className="bg-grey02 mt-2 p-3 rounded-lg">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-mainpink text-med14">판매자</span>
+      </div>
+
+      <textarea
+        value={replyText}
+        onChange={e => setReplyText(e.target.value)}
+        placeholder="답변을 입력하세요..."
+        className="w-full bg-transparent text-darkgrey03 text-reg14 placeholder-darkgrey01 outline-none resize-none"
+        rows={3}
+      />
+
+      {/* 취소/등록 버튼 */}
+      <div className="flex justify-end gap-2 mt-2">
+        <button
+          onClick={onCancelReply}
+          className="text-med13 text-darkgrey04 cursor-pointer"
+        >
+          취소
+        </button>
+        <button
+          onClick={() => {
+            onReplySubmit(qna.id, replyText);
+            setReplyText("");
+          }}
+          className="text-med13 text-mainpink cursor-pointer"
+        >
+          등록
+        </button>
+      </div>
+    </div>
+  );
+
+  const renderAnswerBlock = () =>
+    qna.answer && (
+      <div className="bg-grey02 mt-2 p-3 rounded-lg">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-mainpink text-med14">판매자</span>
+          <span className="text-bluegrey08 text-reg12">
+            {formatTimeAgo(qna.answer.createdAt)}
+          </span>
+        </div>
+        <p className="text-darkgrey03 text-reg14">{qna.answer?.text}</p>
+      </div>
+    );
 
   return (
     <div className="flex gap-5">
@@ -31,9 +88,9 @@ const QnaItem = ({ qna, isSeller, onReply }: QnaItemProps) => {
               </div>
             </div>
 
-            {isSeller && !hasAnswer && (
+            {isSeller && !hasAnswer && !isReplying && (
               <button
-                onClick={onReply}
+                onClick={() => onStartReply(qna.id)}
                 className="bg-lightpink text-mainpink text-reg12 rounded-md h-7 my-auto px-2 py-1 cursor-pointer"
               >
                 답변 달기
@@ -44,17 +101,8 @@ const QnaItem = ({ qna, isSeller, onReply }: QnaItemProps) => {
           <p className="text-reg14 text-darkgrey03">{qna.text}</p>
         </div>
 
-        {qna.answer && (
-          <div className="bg-grey02 mt-2 p-3 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-mainpink text-med14">판매자</span>
-              <span className="text-bluegrey08 text-reg12">
-                {formatTimeAgo(qna.answer.createdAt)}
-              </span>
-            </div>
-            <p className="text-darkgrey03 text-reg14">{qna.answer?.text}</p>
-          </div>
-        )}
+        {hasAnswer && renderAnswerBlock()}
+        {isReplying && renderRelpyForm()}
       </div>
     </div>
   );

@@ -13,12 +13,18 @@ export interface QnaData {
 export interface QnaListProps {
   qnaList: QnaData[];
   isSeller: boolean;
+  replyingToId: number | null;
   onAskQuestion: () => void;
-  onReply: (questionId: number) => void;
+  onStartReply: (questionId: number) => void;
+  onCancelReply: () => void;
+  onReplySubmit: (questionId: number, answerText: string) => void;
 }
 
 export interface QnaItemProps {
   qna: QnaData;
   isSeller: boolean;
-  onReply: () => void;
+  isReplying: boolean;
+  onStartReply: (questionId: number) => void;
+  onCancelReply: () => void;
+  onReplySubmit: (questionId: number, answerText: string) => void;
 }

@@ -4,8 +4,11 @@ import { QnaListProps } from "@/types/item/detail/Qna.type";
 const QnaList = ({
   qnaList,
   isSeller,
+  replyingToId,
   onAskQuestion,
-  onReply,
+  onStartReply,
+  onCancelReply,
+  onReplySubmit,
 }: QnaListProps) => {
   return (
     <div className="bg-white py-4 mb-2">
@@ -28,7 +31,12 @@ const QnaList = ({
               key={qna.id}
               qna={qna}
               isSeller={isSeller}
-              onReply={() => onReply(qna.id)}
+              isReplying={qna.id === replyingToId}
+              onStartReply={onStartReply}
+              onCancelReply={onCancelReply}
+              onReplySubmit={(questionId, answerText) =>
+                onReplySubmit(questionId, answerText)
+              }
             />
           ))}
         </div>
