@@ -1,3 +1,4 @@
+import BidBottomSheet from "@/components/item/detail/bid/BidBottomSheet";
 import BidHistoryList from "@/components/item/detail/bidHistory/BidHistoryList";
 import Footer from "@/components/item/detail/footer/Footer";
 import Header from "@/components/item/detail/header/Header";
@@ -11,10 +12,6 @@ import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
 import { QnaData } from "@/types/item/detail/Qna.type";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const handleBidClick = () => {
-  alert("입찰하기");
-};
 
 const ItemDetailPage = () => {
   const item = mockItems;
@@ -32,6 +29,12 @@ const ItemDetailPage = () => {
   const [isAsking, setIsAsking] = useState(false);
   const [replyingToId, setReplyingToId] = useState<number | null>(null);
 
+  // 입찰
+  const [isBidSheetOpen, setBidSheetOpen] = useState(false);
+  const [currentHighestPrice, setCurrentHighestPrice] = useState(
+    item.currentPrice
+  );
+
   // 채팅하기
   const handleConfirmChat = () => {
     setChatModalOpen(false);
@@ -44,16 +47,31 @@ const ItemDetailPage = () => {
     navigate("/");
   };
 
+  // 입찰하기 버튼 클릭시
+  const handleBidClick = () => {
+    setBidSheetOpen(true);
+    setIsAsking(false);
+    setReplyingToId(null);
+  };
+
+  // 입찰 제출
+  const handleBidSubmit = (amount: number) => {
+    alert(`🎉 ${amount}원으로 입찰 성공`);
+    setCurrentHighestPrice(amount);
+  };
+
   // 질문하기
   const handleAskQuestion = () => {
     setIsAsking(true);
     setReplyingToId(null);
+    setBidSheetOpen(false);
   };
 
   // 답변 달기
   const handleStartReply = (questionId: number) => {
     setReplyingToId(questionId);
     setIsAsking(false);
+    setBidSheetOpen(false);
   };
 
   // 답변 취소 클릭시
@@ -74,7 +92,6 @@ const ItemDetailPage = () => {
     };
 
     setQnaList(prevList => [...prevList, newQuestion]);
-
     setIsAsking(false);
   };
 
@@ -160,9 +177,17 @@ const ItemDetailPage = () => {
         <p>
           낙찰된 경매의 구매를 거부할 시,
           <br />
-          최종 날찰가의 10%가 보증금으로 차감됩니다.
+          최종 낙찰가의 10%가 보증금으로 차감됩니다.
         </p>
       </ConfirmModal>
+
+      {/* 입찰하기 바텀 시트 */}
+      <BidBottomSheet
+        isOpen={isBidSheetOpen}
+        onClose={() => setBidSheetOpen(false)}
+        currentHighestPrice={currentHighestPrice}
+        onBidSubmit={handleBidSubmit}
+      />
     </div>
   );
 };
