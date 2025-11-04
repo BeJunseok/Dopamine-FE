@@ -7,7 +7,7 @@ interface SellerInfoProps {
 }
 
 const SellerInfo = ({ seller }: SellerInfoProps) => (
-  <section className="border-t border-bluegrey02 pt-4 mb-4">
+  <section className="border-t border-bluegrey02 pt-4">
     <h3 className="text-reg14 text-bluegrey08 mb-2"> 판매자</h3>
     <div className="flex items-center space-x-2">
       <img

@@ -7,108 +7,57 @@ import ItemImage from "@/components/item/detail/itemImage/ItemImage";
 import ConfirmModal from "@/components/item/detail/modal/ConfirmModal";
 import QnaInputBar from "@/components/item/detail/qna/QnaInputBar";
 import QnaList from "@/components/item/detail/qna/QnaList";
+import { useItemBid } from "@/hooks/useItemBid";
+import { useItemModal } from "@/hooks/useItemModal";
+import { useItemQna } from "@/hooks/useItemQna";
 import { useItemState } from "@/hooks/useItemState";
 import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
-import { QnaData } from "@/types/item/detail/Qna.type";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const ItemDetailPage = () => {
   const item = mockItems;
   const userId = 1;
+
+  // 제품 상태
   const { isLive, isEnded, viewState, depositAmount, hasBid, isSeller } =
     useItemState({ item, userId });
 
   // 모달
-  const [isChatModalOpen, setChatModalOpen] = useState(false);
-  const [isRejectModalOpen, setRejectModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const {
+    isChatModalOpen,
+    setChatModalOpen,
+    isRejectModalOpen,
+    setRejectModalOpen,
+    handleConfirmChat,
+    handleConfirmReject,
+  } = useItemModal();
 
-  // Q&A 질문/답변
-  const [qnaList, setQnaList] = useState<QnaData[]>(mockQna);
-  const [isAsking, setIsAsking] = useState(false);
-  const [replyingToId, setReplyingToId] = useState<number | null>(null);
+  // Q&A
+  const {
+    qnaList,
+    isAsking,
+    replyingToId,
+    setIsAsking,
+    handleAskQuestion,
+    handleStartReply,
+    handleCancelReply,
+    handleQuestionSubmit,
+    handleReplySubmit,
+    cancelAsking,
+  } = useItemQna(mockQna);
 
   // 입찰
-  const [isBidSheetOpen, setBidSheetOpen] = useState(false);
-  const [currentHighestPrice, setCurrentHighestPrice] = useState(
-    item.currentPrice
-  );
-
-  // 채팅하기
-  const handleConfirmChat = () => {
-    setChatModalOpen(false);
-    alert("채팅방으로 이동");
-  };
-
-  // 구매 거부
-  const handleConfirmReject = () => {
-    setRejectModalOpen(false);
-    navigate("/");
-  };
+  const {
+    isBidSheetOpen,
+    setBidSheetOpen,
+    currentHighestPrice,
+    handleBidSubmit,
+    closeBidSheet,
+  } = useItemBid(item.currentPrice);
 
   // 입찰하기 버튼 클릭시
   const handleBidClick = () => {
     setBidSheetOpen(true);
     setIsAsking(false);
-    setReplyingToId(null);
-  };
-
-  // 입찰 제출
-  const handleBidSubmit = (amount: number) => {
-    alert(`🎉 ${amount}원으로 입찰 성공`);
-    setCurrentHighestPrice(amount);
-  };
-
-  // 질문하기
-  const handleAskQuestion = () => {
-    setIsAsking(true);
-    setReplyingToId(null);
-    setBidSheetOpen(false);
-  };
-
-  // 답변 달기
-  const handleStartReply = (questionId: number) => {
-    setReplyingToId(questionId);
-    setIsAsking(false);
-    setBidSheetOpen(false);
-  };
-
-  // 답변 취소 클릭시
-  const handleCancelReply = () => {
-    setReplyingToId(null);
-  };
-
-  // 새 질문 제출
-  const handleQuestionSubmit = (questionText: string) => {
-    // 암시 객체
-    const newQuestion: QnaData = {
-      id: new Date().getTime(),
-      name: "My",
-      image: "",
-      text: questionText,
-      createdAt: new Date().toString(),
-      answer: null,
-    };
-
-    setQnaList(prevList => [...prevList, newQuestion]);
-    setIsAsking(false);
-  };
-
-  // 답변 제출
-  const handleReplySubmit = (questionId: number, answerText: string) => {
-    const newAnswer = {
-      text: answerText,
-      createdAt: new Date().toString(),
-    };
-
-    setQnaList(prevList =>
-      prevList.map(qna =>
-        qna.id === questionId ? { ...qna, answer: newAnswer } : qna
-      )
-    );
-
-    setReplyingToId(null);
   };
 
   return (
@@ -141,10 +90,7 @@ const ItemDetailPage = () => {
 
       {/* 질문하기를 누르면 Footer X */}
       {isAsking ? (
-        <QnaInputBar
-          onSubmit={handleQuestionSubmit}
-          onClose={() => setIsAsking(false)}
-        />
+        <QnaInputBar onSubmit={handleQuestionSubmit} onClose={cancelAsking} />
       ) : (
         <Footer
           viewState={viewState}
@@ -184,7 +130,7 @@ const ItemDetailPage = () => {
       {/* 입찰하기 바텀 시트 */}
       <BidBottomSheet
         isOpen={isBidSheetOpen}
-        onClose={() => setBidSheetOpen(false)}
+        onClose={closeBidSheet}
         currentHighestPrice={currentHighestPrice}
         onBidSubmit={handleBidSubmit}
       />
