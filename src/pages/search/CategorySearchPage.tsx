@@ -20,8 +20,8 @@ const mockProducts = [
     timeLeft: "2",
   },
   {
+    id: 3,
     categoryId: 1,
-    category: "스포츠",
     name: "아디다스 슈퍼스타",
     price: 90000,
     status: "경매중",
@@ -58,6 +58,8 @@ const CategorySearchPage: React.FC = () => {
   const location = useLocation();
 
   const initialCategory = location.state?.category || "카테고리 2";
+  const categoryId = location.state?.categoryId || 1;
+
   const [activeCategory, setActiveCategory] = useState<string | null>(
     initialCategory
   );
@@ -71,19 +73,14 @@ const CategorySearchPage: React.FC = () => {
     if (stored) setRecentSearches(JSON.parse(stored));
   }, []);
 
-  // 검색 로직 (카테고리 필터 포함)
+  // ✅ 검색 로직 (categoryId 기반 필터링)
   useEffect(() => {
-    let baseList = mockProducts;
-
-    if (activeCategory) {
-      baseList = baseList.filter(p => p.category === activeCategory);
-    }
-
+    const baseList = mockProducts.filter(p => p.categoryId === categoryId);
     const results = baseList.filter(p =>
       p.name.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredProducts(results);
-  }, [query, activeCategory]);
+  }, [query, categoryId]);
 
   // 최근 검색어 저장
   const handleSearchSubmit = () => {
@@ -102,9 +99,7 @@ const CategorySearchPage: React.FC = () => {
     localStorage.setItem("recentSearches", JSON.stringify(updated));
   };
 
-  const handleCategoryRemove = () => {
-    setActiveCategory(null);
-  };
+  const handleCategoryRemove = () => setActiveCategory(null);
 
   return (
     <div className="w-full max-w-[375px] mx-auto bg-white min-h-[812px] px-[20px] py-6">
@@ -112,14 +107,14 @@ const CategorySearchPage: React.FC = () => {
       <div className="flex items-center mb-[14px]">
         <button
           onClick={() => navigate(-1)}
-          className="flex justify-center items-center w-[32px] h-[32px] bg-transparent border-none outline-none p-0"
+          className="flex justify-center items-center w-[32px] h-[32px] cursor-pointer bg-transparent border-none outline-none p-0"
           style={{ WebkitTapHighlightColor: "transparent" }}
         >
           <Goback className="w-[17.5px] h-[24px]" />
         </button>
 
         {/* 검색창 */}
-        <div className="flex w-[304px] h-[50px] items-center bg-white rounded-lg pl-[8px] pr-[174px] py-[13px] border border-grey09">
+        <div className="flex w-[304px] h-[50px] items-center bg-white rounded-lg pl-[8px] pr-[12px] py-[13px] border border-grey09">
           <Search className="w-[17.5px] h-[24px] mr-[14.5px]" />
 
           {/* 카테고리 태그 */}
@@ -157,23 +152,29 @@ const CategorySearchPage: React.FC = () => {
       {recentSearches.length > 0 && (
         <div className="mt-4">
           <p className="font-med14 text-darkgrey05 mb-3">최근 검색어</p>
-          <div className="flex flex-wrap gap-2">
+          <div
+            className="flex flex-nowrap overflow-x-auto gap-2 pb-1 scrollbar-hide"
+            style={{
+              msOverflowStyle: "none",
+              scrollbarWidth: "none",
+            }}
+          >
             {recentSearches.map((word, i) => (
               <div
                 key={i}
-                className="flex items-center font-med14 text-grey14 border border-grey09 rounded-[8px] px-[6px] py-[5px]"
+                className="flex items-center font-med14 text-grey14 border border-grey09 rounded-[8px] px-3 py-1.5 flex-shrink-0 cursor-pointer"
               >
                 <button
                   onClick={() => setQuery(word)}
-                  className="mr-1 text-darkgrey04"
+                  className="mr-1 text-darkgrey04 whitespace-nowrap"
                 >
                   {word}
                 </button>
                 <button
                   onClick={() => handleRecentDelete(word)}
-                  className="font-med12 text-grey09 "
+                  className="font-med12 text-grey09 flex items-center justify-center"
                 >
-                  <Delete className="w-4 h-4" />
+                  <Delete className="w-3 h-4" />
                 </button>
               </div>
             ))}
@@ -187,7 +188,6 @@ const CategorySearchPage: React.FC = () => {
           <p className="font-med12 text-black mb-[10px]">
             검색 결과 {filteredProducts.length}개
           </p>
-
           <div
             className="flex flex-col gap-3 overflow-y-auto max-h-[550px] scrollbar-hide"
             style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
@@ -223,6 +223,13 @@ const CategorySearchPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* ✅ 스크롤바 숨기기 */}
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };
