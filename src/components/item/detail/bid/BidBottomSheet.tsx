@@ -17,7 +17,7 @@ const BidBottomSheet = ({
   currentHighestPrice,
   onBidSubmit,
 }: BidBottomSheetProps) => {
-  const minBidAmount = currentHighestPrice + 100;
+  const minBidAmount = currentHighestPrice + 1000;
   const [bidAmount, setBidAmount] = useState(minBidAmount);
 
   useEffect(() => {
@@ -34,11 +34,11 @@ const BidBottomSheet = ({
   }, [isOpen, currentHighestPrice]);
 
   const handleIncrease = () => {
-    setBidAmount(prev => prev + 100);
+    setBidAmount(prev => prev + 1000);
   };
 
   const handleDecrease = () => {
-    setBidAmount(prev => Math.max(currentHighestPrice + 100, prev - 100));
+    setBidAmount(prev => Math.max(currentHighestPrice + 1000, prev - 1000));
   };
 
   const handleInputChnage = (e: React.ChangeEvent<HTMLInputElement>) => {
