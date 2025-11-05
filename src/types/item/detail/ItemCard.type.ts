@@ -4,7 +4,7 @@ export interface ItemData {
   endsAt: string; // 경매 종료시간
   currentPrice: number; // 상품 가격
   bidCount: number; // 입찰자 수
-  myPrice: number; // 내 입찰가
+  myPrice: number | null; // 내 입찰가
   winnerId: number; // 낙찰자
   description: string; // 상품 설명
   item: {

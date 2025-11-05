@@ -74,9 +74,9 @@ const ItemDetailPage = () => {
       />
       <BidHistoryList
         state={item.state}
-        bids={mockBids}
+        bids={mockBids.bids}
         userId={userId}
-        totalBidCount={7}
+        totalBidCount={mockBids.totalBidCount}
       />
       <QnaList
         qnaList={qnaList}

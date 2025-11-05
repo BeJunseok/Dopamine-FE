@@ -12,7 +12,7 @@ export const mockImages = [
 export const mockItems: ItemData = {
   title: "빈티지 레더 자켓", // 상품명
   state: "ENDED", // 경매 상태
-  endsAt: "2025-11-06T15:25:00Z", // 경매 종료시간
+  endsAt: "2025-11-05T15:25:00Z", // 경매 종료시간
   currentPrice: 100220, // 상품 가격
   bidCount: 7, // 입찰자 수
   myPrice: 42000, // 내 입찰가
@@ -33,64 +33,67 @@ export const mockItems: ItemData = {
   },
 };
 
-export const mockBids = [
-  {
-    userId: 101,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "후멕덧",
-    bidPrice: 285000,
-    bidAt: "2025-11-02T15:25:00Z",
-  },
-  {
-    userId: 102,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "레트로팬92",
-    bidPrice: 78000,
-    bidAt: "2025-11-04T04:25:00Z",
-  },
-  {
-    userId: 1,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "재킷러버",
-    bidPrice: 69000,
-    bidAt: "2025-10-31T02:25:00Z",
-  },
-  {
-    userId: 104,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "스타일헌터12",
-    bidPrice: 66000,
-    bidAt: "2025-11-03T15:25:00Z",
-  },
-  {
-    userId: 105,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "스타일헌터12",
-    bidPrice: 66000,
-    bidAt: "2025-11-01T06:33:00Z",
-  },
-  {
-    userId: 106,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "스타일헌터12",
-    bidPrice: 66000,
-    bidAt: "2025-11-04T15:25:00Z",
-  },
-  {
-    userId: 107,
-    image:
-      "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
-    name: "스타일헌터12",
-    bidPrice: 66000,
-    bidAt: "2025-11-04T15:25:00Z",
-  },
-];
+export const mockBids = {
+  totalBidCount: 7,
+  bids: [
+    {
+      userId: 101,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "후멕덧",
+      bidPrice: 285000,
+      bidAt: "2025-11-02T15:25:00Z",
+    },
+    {
+      userId: 102,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "레트로팬92",
+      bidPrice: 78000,
+      bidAt: "2025-11-04T04:25:00Z",
+    },
+    {
+      userId: 1,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "재킷러버",
+      bidPrice: 69000,
+      bidAt: "2025-10-31T02:25:00Z",
+    },
+    {
+      userId: 104,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "스타일헌터12",
+      bidPrice: 66000,
+      bidAt: "2025-11-03T15:25:00Z",
+    },
+    {
+      userId: 105,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "스타일헌터12",
+      bidPrice: 66000,
+      bidAt: "2025-11-01T06:33:00Z",
+    },
+    {
+      userId: 106,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "스타일헌터12",
+      bidPrice: 66000,
+      bidAt: "2025-11-04T15:25:00Z",
+    },
+    {
+      userId: 107,
+      image:
+        "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80",
+      name: "스타일헌터12",
+      bidPrice: 66000,
+      bidAt: "2025-11-04T15:25:00Z",
+    },
+  ],
+};
 
 export const mockQna = [
   {

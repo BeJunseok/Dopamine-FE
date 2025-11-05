@@ -22,15 +22,17 @@ const Footer = ({
   switch (viewState) {
     case "LIVE":
     case "LIVE_BIDDING":
-      content = (
-        <button
-          onClick={onBidClick}
-          className="w-full flex justify-center items-center gap-2 py-3 bg-mainpink text-white rounded-xl text-med16 cursor-pointer"
-        >
-          <Bid className="w-5 h-5" />
-          입찰하기
-        </button>
-      );
+      if (!isSeller) {
+        content = (
+          <button
+            onClick={onBidClick}
+            className="w-full flex justify-center items-center gap-2 py-3 bg-mainpink text-white rounded-xl text-med16 cursor-pointer"
+          >
+            <Bid className="w-5 h-5" />
+            입찰하기
+          </button>
+        );
+      }
       break;
 
     case "WON":
