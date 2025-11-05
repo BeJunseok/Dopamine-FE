@@ -79,16 +79,22 @@ const SearchResultPage: React.FC = () => {
       </div>
 
       {/* 필터 */}
-      <div className="flex items-center mb-4">
-        <Filter className="w-[28px] h-[28px] mr-2" />
-        <div className="flex flex-wrap gap-2 overflow-x-auto whitespace-nowrap">
+      <div className="flex items-center mb-4 flex-shrink-0">
+        <Filter className="w-[28px] h-[28px] mr-1" />
+        <div
+          className="flex flex-nowrap overflow-x-auto gap-1.5 scrollbar-hide"
+          style={{
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+        >
           {["상태", "연식", "가격", "카테고리"].map(label => (
             <button
               key={label}
-              className="flex items-center font-med13 text-grey14 border border-grey09 rounded-[3px] px-[4px] py-[2px]"
+              className="flex items-center font-med13 text-grey14 border border-grey09 rounded-[3px] px-[6px] py-[3px] whitespace-nowrap flex-shrink-0"
             >
               {label}
-              <Dropdown className="w-[21px] h-[21px] ml-1" />
+              <Dropdown className="w-[18px] h-[18px] ml-[4px]" />
             </button>
           ))}
         </div>
@@ -98,7 +104,14 @@ const SearchResultPage: React.FC = () => {
         검색 결과 {filteredProducts.length}개
       </p>
 
-      <div className="flex flex-col gap-4 overflow-y-scroll flex-1 scrollbar-hide">
+      {/* 상품 리스트 */}
+      <div
+        className="flex flex-col gap-4 overflow-y-auto flex-1 scrollbar-hide"
+        style={{
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
+        }}
+      >
         {filteredProducts.length === 0 ? (
           <p className="font-med14 text-grey04">검색 결과가 없습니다.</p>
         ) : (
@@ -128,6 +141,13 @@ const SearchResultPage: React.FC = () => {
           ))
         )}
       </div>
+
+      {/* 스크롤바 숨기기 */}
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };
