@@ -73,7 +73,7 @@ const CategorySearchPage: React.FC = () => {
     if (stored) setRecentSearches(JSON.parse(stored));
   }, []);
 
-  // ✅ 검색 로직 (categoryId 기반 필터링)
+  // 검색 로직 (categoryId 기반 필터링)
   useEffect(() => {
     const baseList = mockProducts.filter(p => p.categoryId === categoryId);
     const results = baseList.filter(p =>
@@ -224,7 +224,7 @@ const CategorySearchPage: React.FC = () => {
         </div>
       )}
 
-      {/* ✅ 스크롤바 숨기기 */}
+      {/* 스크롤바 숨기기 */}
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
