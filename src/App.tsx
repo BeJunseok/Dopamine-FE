@@ -15,6 +15,9 @@ import NotFoundPage from "@/pages/notFound/NotFoundPage";
 import OnboardingPage from "@/pages/onboarding/OnboardingPage";
 import SearchPage from "@/pages/search/SearchPage";
 import SearchResultPage from "@/pages/search/SearchResultPage";
+import CategorySelectPage from "@/pages/search/CategorySelectPage";
+import CategorySearchPage from "@/pages/search/CategorySearchPage";
+import CategoryResultPage from "@/pages/search/CategoryResultPage";
 
 function App() {
   return (
@@ -23,19 +26,31 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route element={<LayoutWithFooter />}>
             <Route index element={<HomePage />} />
-            <Route path="/items" element={<BidItemPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/search/result" element={<SearchResultPage />} />
-            <Route path="/my" element={<MyPage />} />
+            <Route path="items" element={<BidItemPage />} />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="search/result" element={<SearchResultPage />} />
+            <Route
+              path="search/category-select"
+              element={<CategorySelectPage />}
+            />
+            <Route
+              path="search/category-search"
+              element={<CategorySearchPage />}
+            />
+            <Route
+              path="search/category-result"
+              element={<CategoryResultPage />}
+            />
+            <Route path="my" element={<MyPage />} />
           </Route>
 
-          <Route path="/onboarding" element={<OnboardingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/item/:id" element={<ItemDetailPage />} />
-          <Route path="/chat/:id" element={<ChatPage />} />
-          <Route path="/my/points" element={<PointInquiryPage />} />
-          <Route path="/my/points/charge" element={<ChargePointPage />} />
-          <Route path="/my/items/new" element={<NewAutionPage />} />
+          <Route path="onboarding" element={<OnboardingPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="item/:id" element={<ItemDetailPage />} />
+          <Route path="chat/:id" element={<ChatPage />} />
+          <Route path="my/points" element={<PointInquiryPage />} />
+          <Route path="my/points/charge" element={<ChargePointPage />} />
+          <Route path="my/items/new" element={<NewAutionPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>
