@@ -27,6 +27,7 @@ node_modules
 dist
 .vite
 build
+tsconfig.tsbuildinfo
 
 # 캐시 폴더
 .npm
