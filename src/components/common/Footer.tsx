@@ -30,11 +30,11 @@ const Footer = () => {
   const navClassName = ({ isActive }: { isActive: boolean }) => {
     return clsx(
       "flex flex-col items-center justify-center gap-1 text-[12px] w-full h-full",
-      isActive ? "text-black fill-black" : "text-[#A3A3A3] fill-[#A3A3A3]"
+      isActive ? "text-black fill-black" : "text-grey14 fill-grey14"
     );
   };
   return (
-    <div className="fixed bottom-0 w-full max-w-[375px] bg-white border-t border-[#E5E5E5] z-50">
+    <div className="fixed bottom-0 w-full max-w-[375px] bg-white border-t border-grey04 z-50">
       <div className="flex justify-around items-center h-20">
         {menuData.map(item => {
           const IconComponent = item.icon;

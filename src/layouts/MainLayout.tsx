@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div className="min-h-[100dvh] w-screen bg-black flex justify-center">
+    <div className="min-h-[100dvh] bg-black flex justify-center">
       <main className="w-full max-w-[375px] bg-white">
         <Outlet />
       </main>
