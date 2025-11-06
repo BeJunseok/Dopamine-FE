@@ -12,7 +12,7 @@ const menuData = [
   {
     name: "검색",
     icon: Search,
-    to: "/search",
+    to: "/search/category-select",
   },
   {
     name: "입찰물품",
