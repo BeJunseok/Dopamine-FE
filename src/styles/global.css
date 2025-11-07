@@ -18,6 +18,8 @@ body {
 @theme {
   --color-mainpink: #fe0a58;
   --color-lightpink: #fee6ee;
+  --color-lightpink01: #fffafc;
+  --color-lightpink02: #ffbcd0;
 
   --color-green01: #22c14d;
   --color-lightgreen01: #e5ffe6;
