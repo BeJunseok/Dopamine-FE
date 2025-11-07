@@ -1,8 +1,9 @@
 export interface WonItemData {
   autionId: number;
   title: string;
+  image: string;
   wonPrice: number;
-  state: "낙찰 완료";
+  state: "ENDED";
   roomId: number;
 }
 

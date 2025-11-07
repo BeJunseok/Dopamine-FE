@@ -13,7 +13,12 @@ const WonItem = ({ wonItem }: WonItemProps) => {
       to={`/item/${wonItem.autionId}`}
       className="w-full p-3 flex items-center justify-between gap-2 rounded-lg bg-white border border-grey04"
     >
-      <div className="w-16 h-16 bg-grey09 rounded-lg" />
+      <img
+        src={wonItem.image}
+        alt={wonItem.title}
+        className="object-cover w-16 h-16 rounded-lg bg-grey09"
+      />
+
       <div className="flex flex-col flex-1 gap-1">
         <div className="text-med14 text-darkgrey05">{wonItem.title}</div>
         <div className="text-reg12 text-darkgrey02">

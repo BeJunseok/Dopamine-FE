@@ -7,15 +7,19 @@ const mockWonItems: WonItems = {
     {
       autionId: 1,
       title: "빈티지 레더 자켓",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKNgJcjoXotdEgGY7ZuKmUCacqJjoEh2Omg&s",
       wonPrice: 89000,
-      state: "낙찰 완료",
+      state: "ENDED",
       roomId: 1,
     },
     {
       autionId: 2,
       title: "빈티지 카메라",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKNgJcjoXotdEgGY7ZuKmUCacqJjoEh2Omg&s",
       wonPrice: 150000,
-      state: "낙찰 완료",
+      state: "ENDED",
       roomId: 2,
     },
   ],
