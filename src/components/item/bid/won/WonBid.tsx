@@ -15,7 +15,7 @@ const WonBid = ({ wonItems }: WonBidProps) => {
   const restItems = autions.slice(1);
 
   return (
-    <div className="bg-white p-4">
+    <div className="bg-white p-4 mb-2">
       <div className="flex items-center gap-2 mb-3">
         <Trophy className="w-5 h-5" />
         <span className="text-med18 text-darkgrey05">낙찰된 물품</span>
@@ -24,7 +24,7 @@ const WonBid = ({ wonItems }: WonBidProps) => {
       {hasItems ? (
         <div className="flex flex-col gap-4">
           <div className="border-l-4 border-mainpink bg-lightpink01 rounded-xl p-4 pr-0">
-            <div className="flex items-start gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-3">
               <Check className="w-5 h-5" />
               <p className="text-darkgrey04 text-med13">
                 낙찰을 축하합니다! 바로 판매자와 채팅해보세요.

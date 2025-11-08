@@ -8,11 +8,20 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 :root {
   font-family: "Pretendard", sans-serif, system-ui;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @theme {
