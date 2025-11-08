@@ -10,8 +10,6 @@ interface BiddingItemProps {
 const BiddingItem = ({ biddingItem }: BiddingItemProps) => {
   const isAcutioning = biddingItem.state === "RUNNING";
 
-  console.log(biddingItem.endsAt);
-
   return (
     <Link
       to={`/item/${biddingItem.autionId}`}
