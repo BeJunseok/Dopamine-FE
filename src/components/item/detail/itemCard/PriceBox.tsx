@@ -7,7 +7,7 @@ interface PriceBoxProps {
   isEnded: boolean;
   currentPrice: number;
   bidCount: number;
-  myPrice: number;
+  myPrice: number | null;
   hasBid: boolean;
   depositAmount: number;
 }

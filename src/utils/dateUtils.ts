@@ -23,6 +23,35 @@ export const formatTimeLeft = (dateStr: string) => {
   return `${hours}시간 ${minutes}분 ${seconds}초`;
 };
 
+export const formatTimeLeftSimple = (dateStr: string) => {
+  if (!dateStr) return;
+
+  const endDate = new Date(dateStr);
+  const now = new Date();
+
+  if (endDate.getTime() <= now.getTime()) return "";
+
+  const duration = intervalToDuration({ start: now, end: endDate });
+
+  const days = duration.days ?? 0;
+  const hours = duration.hours ?? 0;
+  const minutes = duration.minutes ?? 0;
+
+  if (days > 0) {
+    return `${days}일 남음`;
+  }
+
+  if (hours > 0) {
+    return `${hours}시간 남음`;
+  }
+
+  if (minutes > 0) {
+    return `${minutes}분 남음`;
+  }
+
+  return "1분 미만 남음";
+};
+
 export const formatTimeAgo = (dateStr: string) => {
   if (!dateStr) return;
 
