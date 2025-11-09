@@ -1,4 +1,4 @@
-import TrophyIcon from "@/assets/svgs/item/detail/trophy.svg?react";
+import { Trophy } from "@/assets/svgs/item/detail";
 import { BidHistoryItemProps } from "@/types/item/detail/BidHistory.type";
 import { formatTimeAgo } from "@/utils/dateUtils";
 import { formatPrice } from "@/utils/priceUtils";
@@ -14,22 +14,22 @@ const BidHistoryItem = ({
   const renderRank = () => {
     if (isWinner) {
       return (
-        <div className="text-mainpink w-5 h-5 flex items-center justify-center">
-          <TrophyIcon />
+        <div className="w-6 h-6 flex items-center justify-center">
+          <Trophy className="w-6 h-6" />
         </div>
       );
     }
 
     if (isCurrentTop) {
       return (
-        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-bluegrey10 text-white text-reg12">
+        <div className="w-6 h-6 flex items-center justify-center rounded-full bg-bluegrey10 text-white text-reg12">
           1
         </div>
       );
     }
 
     return (
-      <div className="w-5 h-5 flex items-center justify-center rounded-full bg-grey06 text-white text-reg12">
+      <div className="w-6 h-6 flex items-center justify-center rounded-full bg-grey06 text-white text-reg12">
         {rank}
       </div>
     );
@@ -69,7 +69,7 @@ const BidHistoryItem = ({
 
   return (
     <div
-      className={clsx("flex items-center p-3 rounded-lg border", {
+      className={clsx("flex items-center p-4 rounded-lg border", {
         "bg-lightpink border-mainpink": isWinner,
         "bg-grey00 border-grey04": !isWinner && isMybid,
         "bg-white border-grey04": !isWinner && !isMybid,
