@@ -1,4 +1,4 @@
-import { Trophy } from "@/assets/svgs/item/detail";
+import TrophyIcon from "@/assets/svgs/item/detail/trophy.svg?react";
 import { BidHistoryItemProps } from "@/types/item/detail/BidHistory.type";
 import { formatTimeAgo } from "@/utils/dateUtils";
 import { formatPrice } from "@/utils/priceUtils";
@@ -14,27 +14,22 @@ const BidHistoryItem = ({
   const renderRank = () => {
     if (isWinner) {
       return (
-        <div className="text-mainpink w-7 h-7 flex items-center justify-center flex-shrink-0 overflow-visible">
-          <Trophy className="w-7 h-6 -translate-x-1" />
+        <div className="text-mainpink w-5 h-5 flex items-center justify-center">
+          <TrophyIcon />
         </div>
       );
     }
 
     if (isCurrentTop) {
       return (
-        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-darkgrey05 text-white text-reg12 mr-2">
+        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-bluegrey10 text-white text-reg12">
           1
         </div>
       );
     }
 
     return (
-      <div
-        className={clsx(
-          "w-5 h-5 flex items-center justify-center rounded-full text-white text-reg12 mr-2",
-          isMybid ? "bg-darkgrey05" : "bg-grey06"
-        )}
-      >
+      <div className="w-5 h-5 flex items-center justify-center rounded-full bg-grey06 text-white text-reg12">
         {rank}
       </div>
     );
@@ -44,9 +39,7 @@ const BidHistoryItem = ({
     <div className="flex flex-col">
       <div className="flex items-center gap-1">
         <span className="text-reg14 text-darkgrey05">{bid.name}</span>
-        {isMybid && (
-          <span className="w-[5px] h-[5px] rounded-full bg-mainpink"></span>
-        )}
+        {isWinner && <span className="w-1 h-1 rounded-full bg-mainpink"></span>}
       </div>
 
       <div className="text-reg12 text-darkgrey01">
@@ -76,23 +69,18 @@ const BidHistoryItem = ({
 
   return (
     <div
-      className={clsx(
-        "flex items-center justify-center p-3 rounded-lg border border-grey04",
-        {
-          "bg-lightpink": isMybid, // 내 입찰
-          "border-mainpink": isWinner, // 경매 종료 - 1등
-          "bg-grey00 ": isCurrentTop, // 경매중 - 1등
-        }
-      )}
+      className={clsx("flex items-center p-3 rounded-lg border", {
+        "bg-lightpink border-mainpink": isWinner,
+        "bg-grey00 border-grey04": !isWinner && isMybid,
+        "bg-white border-grey04": !isWinner && !isMybid,
+      })}
     >
       {renderRank()}
-
       <img
         src={bid.image}
         alt={bid.name}
-        className="w-10 h-10 rounded-full mr-3 bg-grey06"
+        className="w-10 h-10 rounded-full mx-2 bg-grey06"
       />
-
       {renderNameInfo()}
       {renderPriceInfo()}
     </div>

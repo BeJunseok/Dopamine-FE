@@ -1,4 +1,4 @@
-import { formatDistanceToNow, intervalToDuration } from "date-fns";
+import { format, formatDistanceToNow, intervalToDuration } from "date-fns";
 import { ko } from "date-fns/locale";
 
 export const formatTimeLeft = (dateStr: string) => {
@@ -36,4 +36,12 @@ export const formatTimeAgo = (dateStr: string) => {
 
   const formatted = formatDistanceToNow(date, { locale: ko });
   return formatted.replace(/^약\s*/, "") + " 전";
+};
+
+export const formatTimeStamp = (dateStr: string) => {
+  if (!dateStr) return;
+
+  const date = new Date(dateStr);
+
+  return format(date, "a h:mm", { locale: ko });
 };

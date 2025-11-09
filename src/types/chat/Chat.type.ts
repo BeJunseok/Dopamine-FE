@@ -6,3 +6,12 @@ export interface ItemInfo {
   bidStatus?: string;
   paymentStatus?: string;
 }
+
+export interface Message {
+  id: number;
+  senderId: number;
+  image?: string;
+  text: string;
+  createdAt: string;
+  isRead: boolean;
+}
