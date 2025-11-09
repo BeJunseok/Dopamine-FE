@@ -1,5 +1,12 @@
+import Header from "@/components/chat/header/Header";
+import { mockItem } from "@/mock/chatInfo";
+
 const ChatPage = () => {
-  return <div>Chat</div>;
+  return (
+    <>
+      <Header item={mockItem} />
+    </>
+  );
 };
 
 export default ChatPage;
