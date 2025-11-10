@@ -5,7 +5,6 @@ import { useState } from "react";
 const BidHistoryList = ({
   state,
   bids,
-  userId,
   totalBidCount,
 }: BidHistoryListProps) => {
   const [showAll, setShowAll] = useState(false);
@@ -20,7 +19,6 @@ const BidHistoryList = ({
         <div className="flex flex-col gap-3">
           {displayBids.map((bid, index) => {
             const rank = index + 1;
-            const isMyBid = bid.userId === userId;
 
             const isWinner = state === "ENDED" && rank === 1; // 경매 종료시 1등
             const isCurrentTop = state === "RUNNING" && rank === 1; // 경매 진행중 1등
@@ -32,7 +30,6 @@ const BidHistoryList = ({
                 rank={rank}
                 isWinner={isWinner}
                 isCurrentTop={isCurrentTop}
-                isMybid={isMyBid}
               />
             );
           })}

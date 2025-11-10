@@ -3,6 +3,7 @@ import Header from "@/components/chat/header/Header";
 import MessageList from "@/components/chat/message/MessageList";
 import ConfirmModal from "@/components/common/ConfirmModal";
 import { mockItem, mockMessages } from "@/mock/chatInfo";
+import { useUserStore } from "@/store/useUserStore";
 import { Message } from "@/types/chat/Chat.type";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,9 +13,9 @@ const ChatPage = () => {
   const [isSending, setSending] = useState(false);
   const [isModalOPen, setModalOpen] = useState(false);
 
-  const navigate = useNavigate();
+  const userId = useUserStore(state => state.userId);
 
-  const myUserId = 1;
+  const navigate = useNavigate();
 
   const handleMessageSubmit = (text: string) => {
     if (isSending) return;
@@ -23,7 +24,7 @@ const ChatPage = () => {
 
     const tempMessage: Message = {
       id: Math.random(),
-      senderId: myUserId,
+      senderId: userId,
       text: text,
       createdAt: new Date().toISOString(),
       isRead: false,
@@ -43,7 +44,7 @@ const ChatPage = () => {
   return (
     <div className="flex flex-col h-full">
       <Header item={mockItem} />
-      <MessageList messages={messages} myUserId={myUserId} />
+      <MessageList messages={messages} />
       <Footer
         isBuyer={true}
         isSending={isSending}

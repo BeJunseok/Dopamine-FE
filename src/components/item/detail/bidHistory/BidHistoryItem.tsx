@@ -1,4 +1,5 @@
 import { Trophy } from "@/assets/svgs/item/detail";
+import { useUserStore } from "@/store/useUserStore";
 import { BidHistoryItemProps } from "@/types/item/detail/BidHistory.type";
 import { formatTimeAgo } from "@/utils/dateUtils";
 import { formatPrice } from "@/utils/priceUtils";
@@ -9,8 +10,9 @@ const BidHistoryItem = ({
   rank,
   isWinner,
   isCurrentTop,
-  isMybid,
 }: BidHistoryItemProps) => {
+  const userId = useUserStore(state => state.userId);
+  const isMybid = bid.userId === userId;
   const renderRank = () => {
     if (isWinner) {
       return (

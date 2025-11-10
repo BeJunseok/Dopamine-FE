@@ -9,7 +9,7 @@ export interface ItemInfo {
 
 export interface Message {
   id: number;
-  senderId: number;
+  senderId: number | null;
   image?: string;
   text: string;
   createdAt: string;

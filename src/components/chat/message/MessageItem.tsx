@@ -1,13 +1,16 @@
 import Read from "@/assets/svgs/chat/read.svg?react";
+import { useUserStore } from "@/store/useUserStore";
 import { Message } from "@/types/chat/Chat.type";
 import { formatTimeStamp } from "@/utils/dateUtils";
 
 interface MessageItemProps {
   msg: Message;
-  isSender: boolean;
 }
 
-const MessageItem = ({ msg, isSender }: MessageItemProps) => {
+const MessageItem = ({ msg }: MessageItemProps) => {
+  const userId = useUserStore(state => state.userId);
+  const isSender = msg.senderId === userId;
+
   if (isSender) {
     return (
       <div className="flex justify-end mb-5">

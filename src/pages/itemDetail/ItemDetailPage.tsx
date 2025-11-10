@@ -15,11 +15,10 @@ import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
 
 const ItemDetailPage = () => {
   const item = mockItems;
-  const userId = 1;
 
   // 제품 상태
   const { isLive, isEnded, viewState, depositAmount, hasBid, isSeller } =
-    useItemState({ item, userId });
+    useItemState({ item });
 
   // 모달
   const {
@@ -75,7 +74,6 @@ const ItemDetailPage = () => {
       <BidHistoryList
         state={item.state}
         bids={mockBids.bids}
-        userId={userId}
         totalBidCount={mockBids.totalBidCount}
       />
       <QnaList
