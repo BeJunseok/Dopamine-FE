@@ -14,6 +14,8 @@ const ChatPage = () => {
   const [isModalOPen, setModalOpen] = useState(false);
 
   const userId = useUserStore(state => state.userId);
+  const sellerId = 2;
+  const isBuyer = !!userId && userId !== sellerId;
 
   const navigate = useNavigate();
 
@@ -46,7 +48,7 @@ const ChatPage = () => {
       <Header item={mockItem} />
       <MessageList messages={messages} />
       <Footer
-        isBuyer={true}
+        isBuyer={isBuyer}
         isSending={isSending}
         onSubmit={handleMessageSubmit}
         onComplete={() => setModalOpen(true)}
