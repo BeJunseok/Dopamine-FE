@@ -1,10 +1,10 @@
+import ConfirmModal from "@/components/common/ConfirmModal";
 import BidBottomSheet from "@/components/item/detail/bid/BidBottomSheet";
 import BidHistoryList from "@/components/item/detail/bidHistory/BidHistoryList";
 import Footer from "@/components/item/detail/footer/Footer";
 import Header from "@/components/item/detail/header/Header";
 import ItemCard from "@/components/item/detail/itemCard/ItemCard";
 import ItemImage from "@/components/item/detail/itemImage/ItemImage";
-import ConfirmModal from "@/components/item/detail/modal/ConfirmModal";
 import QnaInputBar from "@/components/item/detail/qna/QnaInputBar";
 import QnaList from "@/components/item/detail/qna/QnaList";
 import { useItemBid } from "@/hooks/useItemBid";
@@ -29,7 +29,7 @@ const ItemDetailPage = () => {
     setRejectModalOpen,
     handleConfirmChat,
     handleConfirmReject,
-  } = useItemModal();
+  } = useItemModal(item.roomId);
 
   // Q&A
   const {
