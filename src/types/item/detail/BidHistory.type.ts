@@ -1,5 +1,5 @@
 export interface BidData {
-  userId: number;
+  userId: number | null;
   name: string;
   image: string;
   bidPrice: number;
@@ -9,7 +9,6 @@ export interface BidData {
 export interface BidHistoryListProps {
   state: "RUNNING" | "ENDED";
   bids: BidData[];
-  userId: number;
   totalBidCount: number;
 }
 
@@ -18,5 +17,4 @@ export interface BidHistoryItemProps {
   rank: number;
   isWinner: boolean; // 경매가 끝났을 때 1등
   isCurrentTop: boolean; // 경매가 진행중일 때 1등
-  isMybid: boolean; // 내 입찰인지 여부
 }

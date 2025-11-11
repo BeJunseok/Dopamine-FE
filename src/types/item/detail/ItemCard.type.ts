@@ -18,6 +18,7 @@ export interface ItemData {
     image: string; // 판매자 사진
     name: string; // 판매자 이름
   };
+  roomId: number; // 채팅방 번호
 }
 
 export type ViewState = "LIVE" | "LIVE_BIDDING" | "WON" | "LOST" | "ENDED";

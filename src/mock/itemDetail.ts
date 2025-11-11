@@ -31,6 +31,7 @@ export const mockItems: ItemData = {
       "https://img.freepik.com/free-vector/graident-ai-robot-vectorart_78370-4114.jpg?semt=ais_hybrid&w=740&q=80", // 판매자 사진
     name: "도마민 마켓 0365", // 판매자 이름
   },
+  roomId: 1, // 채팅방 번호
 };
 
 export const mockBids = {
