@@ -67,17 +67,20 @@ export default function SwipeDeck({ items, onChange }: Props) {
       {visible.map((product, i) => {
         const z = visible.length - i; // 맨 위가 가장 큰 z
         const depth = i; // 0,1,2
-        const scale = 1 - depth * 0.03;
-        const translateY = depth * 10;
-        const translateX = depth * 4;
+
+        // ✅ 겹침 효과 강화 (시각적으로 명확히)
+        const scale = 1 - depth * 0.06; // 이전보다 살짝 더 작게
+        const translateY = depth * 20; // 아래로 조금 더 이동
+        const translateX = depth * 6; // 살짝 오른쪽으로 밀기
 
         return (
           <div
             key={product.id}
-            className="absolute inset-0"
+            className="absolute inset-0 transition-transform duration-300 ease-out"
             style={{
               zIndex: z,
               transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
+              opacity: 1 - depth * 0.12, // 살짝 더 투명도 차이
             }}
           >
             <SwipeCard
@@ -102,8 +105,6 @@ export default function SwipeDeck({ items, onChange }: Props) {
       {current && (
         <BidSheet
           open={sheetOpen}
-          title={current.title}
-          basePrice={current.highestBid}
           value={price}
           onChange={setPrice}
           onClose={closeSheet}

@@ -51,14 +51,12 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
       <div className="absolute inset-x-0 bottom-0 p-4">
         {/* 제목(좌) + 현재 최고 입찰가(우) */}
         <div className="flex items-end justify-between gap-3">
-          <h3 className="text-[20px] font-extrabold leading-tight text-white">
+          <h3 className="text-[20px] leading-tight text-white">
             {product.title}
           </h3>
-          <div className="shrink-0 text-[11px] text-grey04">
+          <div className="shrink-0 text-[11px] text-white">
             <span>현재 최고 입찰가 </span>
-            <span className="font-semibold">
-              ₩ {product.highestBid.toLocaleString()}
-            </span>
+            <span>₩ {product.highestBid.toLocaleString()}</span>
           </div>
         </div>
 
@@ -85,25 +83,26 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
           </div>
         ) : (
           <div className="mt-3 flex items-center gap-3">
-            {/* 내가 입찰한 금액 뱃지 */}
-            <div className="flex min-w-0 flex-1 items-center gap-2 rounded-[14px] bg-black/45 px-4 py-2 text-white backdrop-blur">
-              <span className="text-pink-300">w</span>
-              <span className="font-semibold truncate">
-                {(product.bidPrice ?? 0).toLocaleString()}원
-              </span>
-            </div>
-
-            {/* 편집 버튼 */}
+            {/* 편집 버튼 - 왼쪽으로 이동 */}
             <button
               onClick={onOpenBid}
               className="grid h-12 w-12 place-items-center rounded-full"
               title="가격 수정"
               aria-label="가격 수정"
             >
-              <Edit className="h-5 w-5" />
+              <Edit className="h-[38px] w-[38px]" />
             </button>
 
-            {/* 보류 버튼 */}
+            {/* 내가 입찰한 금액 뱃지 */}
+            <div className="flex w-[203px] h-[47px] min-w-0 flex-1 items-center gap-2 rounded-[25.68px] bg-black/45 px-4 py-2 text-[#FF0458] backdrop-blur">
+              <span className="text-[12px]">w</span>
+              <span className="font-med18">
+                {(product.bidPrice ?? 0).toLocaleString()}원
+              </span>
+              <span className=" ml-[13px] font-med18"> 입찰 완료 </span>
+            </div>
+
+            {/* 보류 버튼 - 오른쪽 유지 */}
             <button
               onClick={onDefer}
               title="보류"
@@ -111,7 +110,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
               className="
                 grid h-12 w-12 place-items-center cursor-pointer"
             >
-              <Flip className="h-5 w-5 cursor-pointer" />
+              <Flip className="h-[50px] w-[50px] cursor-pointer" />
             </button>
           </div>
         )}
