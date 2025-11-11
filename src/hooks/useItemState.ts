@@ -1,9 +1,9 @@
+import { useUserStore } from "@/store/useUserStore";
 import type { ItemData } from "@/types/item/detail/ItemCard.type";
 import { ViewState } from "@/types/item/detail/ItemCard.type";
 
 interface UseItemStateProps {
   item: ItemData;
-  userId: number;
 }
 
 export interface ItemState {
@@ -15,10 +15,9 @@ export interface ItemState {
   isSeller: boolean;
 }
 
-export const useItemState = ({
-  item,
-  userId,
-}: UseItemStateProps): ItemState => {
+export const useItemState = ({ item }: UseItemStateProps): ItemState => {
+  const userId = useUserStore(state => state.userId);
+
   const isSeller = item.seller.id === userId;
   const hasBid = item.myPrice !== null && item.myPrice > 0;
   const isWinner = item.winnerId === userId;

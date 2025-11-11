@@ -1,10 +1,10 @@
+import ConfirmModal from "@/components/common/ConfirmModal";
 import BidBottomSheet from "@/components/item/detail/bid/BidBottomSheet";
 import BidHistoryList from "@/components/item/detail/bidHistory/BidHistoryList";
 import Footer from "@/components/item/detail/footer/Footer";
 import Header from "@/components/item/detail/header/Header";
 import ItemCard from "@/components/item/detail/itemCard/ItemCard";
 import ItemImage from "@/components/item/detail/itemImage/ItemImage";
-import ConfirmModal from "@/components/item/detail/modal/ConfirmModal";
 import QnaInputBar from "@/components/item/detail/qna/QnaInputBar";
 import QnaList from "@/components/item/detail/qna/QnaList";
 import { useItemBid } from "@/hooks/useItemBid";
@@ -15,11 +15,10 @@ import { mockBids, mockImages, mockItems, mockQna } from "@/mock/itemDetail";
 
 const ItemDetailPage = () => {
   const item = mockItems;
-  const userId = 1;
 
   // 제품 상태
   const { isLive, isEnded, viewState, depositAmount, hasBid, isSeller } =
-    useItemState({ item, userId });
+    useItemState({ item });
 
   // 모달
   const {
@@ -29,7 +28,7 @@ const ItemDetailPage = () => {
     setRejectModalOpen,
     handleConfirmChat,
     handleConfirmReject,
-  } = useItemModal();
+  } = useItemModal(item.roomId);
 
   // Q&A
   const {
@@ -75,7 +74,6 @@ const ItemDetailPage = () => {
       <BidHistoryList
         state={item.state}
         bids={mockBids.bids}
-        userId={userId}
         totalBidCount={mockBids.totalBidCount}
       />
       <QnaList
