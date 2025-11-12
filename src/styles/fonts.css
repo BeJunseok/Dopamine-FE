@@ -21,6 +21,11 @@
   --text-bold20--line-height: 150%;
   --text-bold20--letter-spacing: 0;
 
+  --text-semibold20: 20px;
+  --text-semibold20--font-weight: 600;
+  --text-semibold20--line-height: 150%;
+  --text-semibold20--letter-spaceing: 0;
+
   --text-reg20: 20px;
   --text-reg20--font-weight: 400;
   --text-reg20--line-height: 150%;
