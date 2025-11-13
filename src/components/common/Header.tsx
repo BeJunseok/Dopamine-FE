@@ -1,7 +1,11 @@
 import { ChevronLeft } from "@/assets/svgs/common";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+interface HeaderProps {
+  title?: string;
+}
+
+const Header = ({ title }: HeaderProps) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -12,11 +16,11 @@ const Header = () => {
     <div className="relative w-full h-12 flex items-center justify-center bg-white border-b border-bluegrey02">
       <button
         onClick={handleBack}
-        className="absolute left-2 cursor-pointer w-8 h-8"
+        className="absolute left-2 cursor-pointer w-6 h-6"
       >
-        <ChevronLeft className="w-8 h-8" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
-      <h1 className="text-med16 text-bluegrey10">포인트 내역 조회</h1>
+      <h1 className="text-med16 text-bluegrey10">{title}</h1>
     </div>
   );
 };

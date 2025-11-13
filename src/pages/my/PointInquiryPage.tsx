@@ -1,4 +1,4 @@
-import Header from "@/components/my/header/Header";
+import Header from "@/components/common/Header";
 import PointItem from "@/components/my/pointItem/PointItem";
 import { mockPointHistory } from "@/mock/pointHistory";
 
@@ -7,7 +7,7 @@ const PointInquiryPage = () => {
 
   return (
     <div>
-      <Header />
+      <Header title="포인트 내역 조회" />
 
       <div className="flex flex-col h-full px-4">
         {pointHistory.map(point => (
