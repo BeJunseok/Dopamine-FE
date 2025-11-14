@@ -34,12 +34,26 @@ export default function SwipeCard({
   return (
     <AnimatePresence mode="popLayout">
       <motion.div
-        style={{ x, rotate }}
+        style={{
+          x,
+          rotate,
+          touchAction: "none",
+          cursor: draggingDisabled ? "default" : "grab",
+          userSelect: "none",
+        }}
         drag={draggingDisabled ? false : "x"}
-        dragElastic={0.2}
+        dragElastic={0.35}
+        dragMomentum={true}
         dragConstraints={{ left: 0, right: 0 }}
+        //수정: 드래그 인식 민감도 상승시켜 데스크탑에서도 인식 잘 되도록 개선
+        onDragStart={() => {
+          document.body.style.cursor = "grabbing";
+        }}
         onDragEnd={(_, info) => {
-          const threshold = 120;
+          document.body.style.cursor = "default";
+
+          const threshold = 40;
+
           if (info.offset.x < -threshold && !preventSwipe.includes("left")) {
             onSwipe?.("left");
             x.set(0);
@@ -53,10 +67,10 @@ export default function SwipeCard({
             x.set(0);
           }
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        transition={{ type: "spring", stiffness: 280, damping: 24 }}
         className={className}
       >
-        {children}
+        <div className="w-full h-full pointer-events-none">{children}</div>
       </motion.div>
     </AnimatePresence>
   );

@@ -8,6 +8,8 @@ type BidSheetProps = {
   onChange: (v: number) => void;
   onClose: () => void;
   onConfirm: () => void;
+  productTitle: string;
+  highestBid: number;
 };
 
 export default function BidSheet({
@@ -16,6 +18,8 @@ export default function BidSheet({
   onChange,
   onClose,
   onConfirm,
+  productTitle,
+  highestBid,
 }: BidSheetProps) {
   useEffect(() => {
     if (!open) return;
@@ -27,79 +31,97 @@ export default function BidSheet({
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
-          className="
-            absolute bottom-2 left-1/2 z-50
-            w-[360px] h-[220px]
-            -translate-x-1/2 flex flex-col justify-between items-center
-            p-4 ring-1 ring-white/10
-            shadow-[0_8px_25px_rgba(0,0,0,0.25)]
-          "
-          style={{
-            borderRadius: "30px 30px 15px 15px",
-            borderTop: "1px solid #A4A4A4",
-            background:
-              "linear-gradient(180deg, rgba(251, 250, 250, 0.25) 0%, rgba(255, 255, 255, 0.6) 100%)",
-          }}
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 40, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          onPointerDownCapture={e => e.stopPropagation()}
-        >
-          {/* 그랩 핸들 */}
-          <div className="mx-auto -mt-[7px] h-[3px] w-[60px] rounded-full bg-[#A4A4A4]" />
+        <>
+          {/* 디자인 수정 */}
+          <motion.div
+            className="absolute inset-0 z-40"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              background: "rgba(33,33,33,0.2)",
+              backdropFilter: "blur(10px)",
+            }}
+          />
 
-          {/* 가격 컨트롤 영역 */}
-          <div className="flex items-center justify-between w-full px-4">
-            {/* 내림 버튼 */}
-            <button
-              className="grid h-[54.504px] w-[54.504px] place-items-center rounded-full bg-[#FFCDDE] shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
-              onClick={e => {
-                e.stopPropagation();
-                onChange(Math.max(0, value - 1000));
-              }}
-            >
-              <Down className="cursor-pointer" />
-            </button>
+          {/* 바텀 시트 */}
+          <motion.div
+            className="absolute bottom-0 left-1/2 z-50 w-full max-w-[420px] -translate-x-1/2 p-5 pb-8 flex flex-col items-center"
+            style={{
+              borderRadius: "20px 20px 0 0",
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 100%)",
+              backdropFilter: "blur(20px)",
+            }}
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            onPointerDownCapture={e => e.stopPropagation()}
+          >
+            {/* 그랩 핸들 */}
+            <div className="h-[5px] w-[60px] rounded-full bg-white/30 mb-4" />
 
-            {/* 중앙 가격 표시 */}
-            <div
-              className="flex items-center justify-center gap-2 w-[162px] h-[49px] font-med18 text-white shadow-inner"
-              style={{
-                borderRadius: "27.776px",
-                border: "2px solid var(--grey-grey15, #999)",
-                background:
-                  "linear-gradient(0deg, rgba(255, 255, 255, 0.35) 57.69%, rgba(255, 255, 255, 0.49) 100%)",
-              }}
-            >
-              <span className="text-white text-[12px]">₩</span>
-              <span>{value.toLocaleString()}</span>
+            {/* 상품명 + 현재 최고 입찰가 */}
+            <div className="flex justify-between items-end w-full mb-4 text-white px-1">
+              <span className="text-[20px] font-medium">{productTitle}</span>
+              <span className="text-[13px] opacity-80">
+                현재 최고 입찰가 ₩ {highestBid.toLocaleString()}
+              </span>
             </div>
 
-            {/* 올림 버튼 */}
+            {/* 가격 조정 섹션 */}
+            <div className="flex items-center justify-between w-full gap-4">
+              {/* 가격 감소 */}
+              <button
+                className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white/20 backdrop-blur-md cursor-pointer"
+                onClick={e => {
+                  e.stopPropagation();
+                  onChange(Math.max(0, value - 1000));
+                }}
+              >
+                <Down className="text-white" />
+              </button>
+
+              {/* 입찰가 */}
+              <div className="flex items-center justify-center gap-2 flex-1 h-[52px] text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full px-4">
+                <span className="text-[14px] opacity-80">₩</span>
+                <input
+                  type="text"
+                  className="bg-transparent w-full text-center outline-none text-[18px] font-medium"
+                  value={value.toLocaleString()}
+                  onChange={e => {
+                    const raw = e.target.value.replace(/[^0-9]/g, "");
+                    onChange(Number(raw || 0));
+                  }}
+                />
+              </div>
+
+              {/* 가격 상승 */}
+              <button
+                className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white/20 backdrop-blur-md cursor-pointer"
+                onClick={e => {
+                  e.stopPropagation();
+                  onChange(value + 1000);
+                }}
+              >
+                <Up className="text-white" />
+              </button>
+            </div>
+
+            {/* 확인(입찰) 버튼 */}
             <button
-              className="grid h-[54.504px] w-[54.504px] place-items-center rounded-full bg-[#FFCDDE] shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
+              className="mt-6 w-full h-[52px] rounded-full bg-mainpink text-white font-medium text-[17px] shadow-[0_8px_18px_rgba(255,4,88,0.35)] active:scale-[0.99] cursor-pointer"
               onClick={e => {
                 e.stopPropagation();
-                onChange(value + 1000);
+                onConfirm();
               }}
             >
-              <Up className="cursor-pointer" />
+              완료
             </button>
-          </div>
-
-          {/* 완료 버튼 */}
-          <button
-            className="mt-5 w-[244px] h-[47px] rounded-[25.68px] bg-mainpink cursor-pointer font-med16 text-white shadow-[0_8px_18px_rgba(255,4,88,0.35)] active:scale-[0.99]"
-            onClick={e => {
-              e.stopPropagation();
-              onConfirm();
-            }}
-          >
-            완료
-          </button>
-        </motion.div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

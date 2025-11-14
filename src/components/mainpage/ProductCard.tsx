@@ -82,7 +82,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
             </button>
           </div>
         ) : (
-          <div className="mt-3 flex items-center gap-3">
+          <div className="mt-3 flex items-center gap-3 cursor-pointer">
             {/* 편집 버튼 - 왼쪽으로 이동 */}
             <button
               onClick={onOpenBid}
@@ -90,10 +90,10 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
               title="가격 수정"
               aria-label="가격 수정"
             >
-              <Edit className="h-[38px] w-[38px]" />
+              <Edit className="h-[38px] w-[38px] cursor-pointer" />
             </button>
 
-            {/* 내가 입찰한 금액 뱃지 */}
+            {/* 내가 입찰한 금액 */}
             <div className="flex w-[203px] h-[47px] min-w-0 flex-1 items-center gap-2 rounded-[25.68px] bg-black/45 px-4 py-2 text-[#FF0458] backdrop-blur">
               <span className="text-[12px]">w</span>
               <span className="font-med18">
@@ -102,7 +102,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
               <span className=" ml-[13px] font-med18"> 입찰 완료 </span>
             </div>
 
-            {/* 보류 버튼 - 오른쪽 유지 */}
+            {/* 보류 버튼 */}
             <button
               onClick={onDefer}
               title="보류"
