@@ -44,7 +44,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
       <Media />
 
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_49.04%,#000_100%)]" />
-
+      {/* swipe 영역과 버튼 영역 겹치지 않도록 수정 */}
       {/* 콘텐츠 */}
       <div className="absolute inset-x-0 bottom-0 p-4 pointer-events-none">
         <div className="flex items-end justify-between gap-3">
@@ -59,7 +59,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
 
         {!product.bidPlaced ? (
           <div className="mt-3 flex items-center gap-3">
-            {/* 버튼 영역만 클릭 가능하게! */}
+            {/* 버튼 영역만 클릭 가능하도록 수정 */}
             <button
               onClick={onOpenBid}
               className="
