@@ -1,7 +1,0 @@
-{
-  "recommendations": [
-    "esbenp.prettier-vscode", // Prettier: 코드 포맷터
-    "dbaeumer.vscode-eslint", // ESLint: 코드 문법 및 오류 검사
-    "bradlc.vscode-tailwindcss"
-  ]
-}
