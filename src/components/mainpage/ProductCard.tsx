@@ -1,5 +1,5 @@
+import { Bidding, Edit, Flip } from "@/assets/svgs/main";
 import type { MainPageProduct } from "@/types/item/bid/Bid.type";
-import { Flip, Edit, Bidding } from "@/assets/svgs/main";
 
 type Props = {
   product: MainPageProduct;
@@ -14,14 +14,14 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
         <img
           src={product.imageUrl}
           alt={product.title}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
         />
       );
     }
     if (product.ImageIcon) {
       const Icon = product.ImageIcon;
       return (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <Icon
             className="h-full w-full"
             preserveAspectRatio="xMidYMid slice"
@@ -29,7 +29,7 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
         </div>
       );
     }
-    return <div className="absolute inset-0 bg-gray-200" />;
+    return <div className="absolute inset-0 bg-gray-200 pointer-events-none" />;
   };
 
   return (
@@ -41,15 +41,12 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
         bg-transparent
       "
     >
-      {/* 배경 이미지/아이콘 */}
       <Media />
 
-      {/* 하단으로 갈수록 진해지는 그라데이션 */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_49.04%,#000_100%)]" />
-
+      {/* swipe 영역과 버튼 영역 겹치지 않도록 수정 */}
       {/* 콘텐츠 */}
-      <div className="absolute inset-x-0 bottom-0 p-4">
-        {/* 제목(좌) + 현재 최고 입찰가(우) */}
+      <div className="absolute inset-x-0 bottom-0 p-4 pointer-events-none">
         <div className="flex items-end justify-between gap-3">
           <h3 className="text-[20px] leading-tight text-white">
             {product.title}
@@ -60,57 +57,57 @@ export default function ProductCard({ product, onOpenBid, onDefer }: Props) {
           </div>
         </div>
 
-        {/* 버튼 줄 */}
         {!product.bidPlaced ? (
           <div className="mt-3 flex items-center gap-3">
-            {/* 입찰 버튼: 가로 가득 + 중앙정렬 */}
+            {/* 버튼 영역만 클릭 가능하도록 수정 */}
             <button
               onClick={onOpenBid}
               className="
+                pointer-events-auto
                 w-[203px] h-[47px] ml-[72px]
                 rounded-[25.68px] bg-mainpink
-                text-white cursor-pointer
-                flex items-center justify-center gap-2"
+                text-white flex items-center justify-center gap-2  cursor-pointer
+              "
             >
               <Bidding className="h-[20px] w-[20px]" />
               <span>입찰</span>
             </button>
 
-            {/* 보류 원형 버튼: 우측 고정 */}
-            <button onClick={onDefer} title="보류" aria-label="보류">
+            <button
+              onClick={onDefer}
+              title="보류"
+              aria-label="보류"
+              className="pointer-events-auto"
+            >
               <Flip className="h-13 w-13 cursor-pointer" />
             </button>
           </div>
         ) : (
           <div className="mt-3 flex items-center gap-3 cursor-pointer">
-            {/* 편집 버튼 - 왼쪽으로 이동 */}
             <button
               onClick={onOpenBid}
-              className="grid h-12 w-12 place-items-center rounded-full"
+              className="grid h-12 w-12 place-items-center rounded-full pointer-events-auto"
               title="가격 수정"
               aria-label="가격 수정"
             >
-              <Edit className="h-[38px] w-[38px] cursor-pointer" />
+              <Edit className="h-[38px] w-[38px]" />
             </button>
 
-            {/* 내가 입찰한 금액 */}
-            <div className="flex w-[203px] h-[47px] min-w-0 flex-1 items-center gap-2 rounded-[25.68px] bg-black/45 px-4 py-2 text-[#FF0458] backdrop-blur">
+            <div className="flex w-[203px] h-[47px] flex-1 items-center gap-2 rounded-[25.68px] bg-black/45 px-4 py-2 text-[#FF0458] backdrop-blur pointer-events-none">
               <span className="text-[12px]">w</span>
               <span className="font-med18">
                 {(product.bidPrice ?? 0).toLocaleString()}원
               </span>
-              <span className=" ml-[13px] font-med18"> 입찰 완료 </span>
+              <span className="ml-[13px] font-med18">입찰 완료</span>
             </div>
 
-            {/* 보류 버튼 */}
             <button
               onClick={onDefer}
               title="보류"
               aria-label="보류"
-              className="
-                grid h-12 w-12 place-items-center cursor-pointer"
+              className="grid h-12 w-12 place-items-center cursor-pointer pointer-events-auto"
             >
-              <Flip className="h-[50px] w-[50px] cursor-pointer" />
+              <Flip className="h-[50px] w-[50px]" />
             </button>
           </div>
         )}

@@ -1,8 +1,8 @@
 import {
+  AnimatePresence,
   motion,
   useMotionValue,
   useTransform,
-  AnimatePresence,
 } from "framer-motion";
 import React, { useEffect } from "react";
 
@@ -45,7 +45,6 @@ export default function SwipeCard({
         dragElastic={0.35}
         dragMomentum={true}
         dragConstraints={{ left: 0, right: 0 }}
-        //수정: 드래그 인식 민감도 상승시켜 데스크탑에서도 인식 잘 되도록 개선
         onDragStart={() => {
           document.body.style.cursor = "grabbing";
         }}
@@ -70,7 +69,8 @@ export default function SwipeCard({
         transition={{ type: "spring", stiffness: 280, damping: 24 }}
         className={className}
       >
-        <div className="w-full h-full pointer-events-none">{children}</div>
+        {/* 버튼 클릭 방해 요소 제거했습니다 */}
+        {children}
       </motion.div>
     </AnimatePresence>
   );
