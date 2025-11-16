@@ -66,7 +66,7 @@ function App() {
           <Route path="chat/:id" element={<ChatPage />} />
           <Route path="my/points" element={<PointInquiryPage />} />
           <Route path="my/points/charge" element={<ChargePointPage />} />
-          <Route path="my/items/new" element={<NewAutionPage />} />
+          <Route path="my/item/new" element={<NewAutionPage />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />
