@@ -1,5 +1,5 @@
-import React from "react";
 import { Search } from "@/assets/svgs/search";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const categories = Array.from({ length: 12 }, (_, i) => ({
@@ -36,7 +36,7 @@ const CategorySelectPage: React.FC = () => {
       <div className="w-full border-t border-grey02 mb-6" />
 
       {/* 카테고리 */}
-      <h2 className="text-base mb-6 font-med16 text-darkgrey05">
+      <h2 className="text-base mb-6 text-med16 text-darkgrey05">
         카테고리 선택
       </h2>
 

@@ -1,4 +1,4 @@
-import { DropUp, DropDown } from "@/assets/svgs/my";
+import { DropDown, DropUp } from "@/assets/svgs/my";
 import { useState } from "react";
 
 interface Props {
@@ -13,14 +13,14 @@ const AuctionDropdown = ({ label, value, options, onChange }: Props) => {
 
   return (
     <div className="mb-4">
-      <label className="block font-med16 text-bluegrey10 mb-2">{label}</label>
+      <label className="block text-med16 text-bluegrey10 mb-2">{label}</label>
 
       <div className="relative">
         <div
           className="w-full p-3 border border-bluegrey03 rounded-[8px] bg-white flex justify-between items-center cursor-pointer"
           onClick={() => setOpen(!open)}
         >
-          <span className="font-reg16 text-darkgrey05">
+          <span className="text-reg16 text-darkgrey05">
             {value || "선택하세요"}
           </span>
           {open ? <DropDown /> : <DropUp />}

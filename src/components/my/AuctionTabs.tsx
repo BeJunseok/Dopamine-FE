@@ -14,11 +14,11 @@ const AuctionTabs = ({
   return (
     <div className="px-4 mt-6">
       {/* 상단 타이틀 + 새 경매 등록 버튼 */}
-      <div className="flex justify-between items-center my-3 mx-4">
-        <p className="font-med18">내가 등록한 경매</p>
+      <div className="flex justify-between items-center my-3">
+        <p className="text-med18">내가 등록한 경매</p>
         <button
           onClick={() => (window.location.href = "/my/item/new")}
-          className="px-3 py-2 bg-bluegrey01 text-darkgrey05 font-med14 rounded-lg hover:bg-grey02 transition cursor-pointer"
+          className="px-3 py-2 bg-bluegrey01 text-darkgrey05 text-med14 rounded-lg hover:bg-grey02 transition cursor-pointer"
         >
           + 새 경매 등록
         </button>
@@ -29,7 +29,7 @@ const AuctionTabs = ({
         {/* 경매중 탭 */}
         <button
           onClick={() => setActiveTab("ongoing")}
-          className={`flex-1 py-3 text-center font-med16 transition cursor-pointer ${
+          className={`flex-1 py-3 text-center text-med16 transition cursor-pointer ${
             activeTab === "ongoing"
               ? "text-darkgrey05 border-b-2 border-darkgrey05"
               : "text-bluegrey07"
@@ -54,7 +54,7 @@ const AuctionTabs = ({
         {/* 거래 완료 탭 */}
         <button
           onClick={() => setActiveTab("completed")}
-          className={`flex-1 py-3 text-center font-med16 transition cursor-pointer ${
+          className={`flex-1 py-3 text-center text-med16 transition cursor-pointer ${
             activeTab === "completed"
               ? "text-darkgrey05 border-b-2 border-darkgrey05"
               : "text-bluegrey07"

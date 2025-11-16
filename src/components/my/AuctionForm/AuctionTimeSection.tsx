@@ -18,7 +18,7 @@ const AuctionTimeSection = ({
   return (
     <div className="my-6">
       {/* 경매 시간 제목 */}
-      <label className="block font-med16 text-bluegrey10 mb-2">경매 시간</label>
+      <label className="block text-med16 text-bluegrey10 mb-2">경매 시간</label>
 
       {/* 시간 선택 버튼 */}
       <DurationSelector
@@ -31,10 +31,10 @@ const AuctionTimeSection = ({
       <div className="flex justify-between items-center mt-2 mb-6">
         {/* 텍스트 부분 */}
         <div>
-          <p className="font-med14 text-bluegrey10 mb-1">
+          <p className="text-med14 text-bluegrey10 mb-1">
             마감 10분 전 입찰가 가리기
           </p>
-          <p className="font-reg12 text-bluegrey08">
+          <p className="text-reg12 text-bluegrey08">
             마지막 순간 경쟁을 방지합니다
           </p>
         </div>

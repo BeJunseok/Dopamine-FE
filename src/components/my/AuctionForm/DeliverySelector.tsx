@@ -11,7 +11,7 @@ const DeliverySelector = ({ value, onChange, options }: Props) => {
         <button
           key={d}
           onClick={() => onChange(d)}
-          className={`flex-1 py-2 rounded-[8px] border font-med14 transition cursor-pointer
+          className={`flex-1 py-2 rounded-[8px] border text-med14 transition cursor-pointer
             ${
               value === d
                 ? "bg-[#FEE6EE] text-mainpink border-mainpink"

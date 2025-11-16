@@ -1,7 +1,7 @@
 import { Goback } from "@/assets/svgs/search";
+import Footer from "@/components/common/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "@/components/common/Footer";
 
 const ChargePointPage = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const ChargePointPage = () => {
             className="w-5 h-5 cursor-pointer"
             onClick={() => navigate(-1)}
           />
-          <h1 className="font-med18 text-darkgrey05">포인트 충전</h1>
+          <h1 className="text-med18 text-darkgrey05">포인트 충전</h1>
         </div>
 
         {/* 본문 영역 */}
@@ -68,12 +68,12 @@ const ChargePointPage = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl w-[70%] max-w-[280px] p-6 text-center shadow-lg">
-            <p className="font-med16 text-darkgrey05 mb-5 whitespace-pre-line">
+            <p className="text-med16 text-darkgrey05 mb-5 whitespace-pre-line">
               {modalMessage}
             </p>
             <button
               onClick={handleConfirm}
-              className="w-full bg-grey01 text-darkgrey05 font-med14 py-3 rounded-lg hover:bg-grey02 transition cursor-pointer"
+              className="w-full bg-grey01 text-darkgrey05 text-med14 py-3 rounded-lg hover:bg-grey02 transition cursor-pointer"
             >
               확인
             </button>

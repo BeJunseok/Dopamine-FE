@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   value: string;
@@ -15,17 +15,24 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
   const [hourIndex, setHourIndex] = useState(0);
   const [minuteIndex, setMinuteIndex] = useState(0);
 
-  // 리스트 데이터
-  const days = Array.from(
-    { length: 15 },
-    (_, i) => `${String(i).padStart(2, "0")}일`
-  );
-  const hours = Array.from(
-    { length: 24 },
-    (_, i) => `${String(i).padStart(2, "0")}시간`
-  );
-  const minutes = ["00분", "10분", "20분", "30분", "40분", "50분"];
+  // 리스트 데이터 (앞뒤에 빈값 2개씩 추가)
 
+  const days = [
+    "",
+    "",
+    ...Array.from({ length: 15 }, (_, i) => `${String(i).padStart(2, "0")}일`),
+  ];
+
+  const hours = [
+    "",
+    "",
+    ...Array.from(
+      { length: 24 },
+      (_, i) => `${String(i).padStart(2, "0")}시간`
+    ),
+  ];
+
+  const minutes = ["", "", ...["00분", "10분", "20분", "30분", "40분", "50분"]];
   // 저장 버튼 눌렀을 때
   const handleSave = () => {
     const result = `${days[dayIndex]} ${hours[hourIndex]} ${minutes[minuteIndex]}`;
@@ -83,8 +90,8 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
               key={i}
               className={`h-[36px] snap-start flex items-center justify-center ${
                 selectedIndex === i
-                  ? "text-bluegrey10 font-med16"
-                  : "text-bluegrey05 font-reg14"
+                  ? "text-bluegrey10 text-med16"
+                  : "text-bluegrey05 text-reg14"
               }`}
             >
               {item}
@@ -138,7 +145,7 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
                   onChange(d);
                 }
               }}
-              className={`flex-1 py-2 rounded-[8px] border font-med14 cursor-pointer
+              className={`flex-1 py-2 rounded-[8px] border text-med14 cursor-pointer
                 ${
                   isSelected
                     ? "bg-[#FEE6EE] text-mainpink border-mainpink"
@@ -155,12 +162,12 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
       {/* 직접 입력 결과 표시 */}
       {isCustom && value.includes("일") && (
         <div className="flex items-center justify-between bg-white border border-bluegrey03 rounded-[8px] px-4 py-3 mb-3">
-          <span className="font-med14 text-bluegrey10">{value}</span>
+          <span className="text-med14 text-bluegrey10">{value}</span>
 
           {/* 변경 버튼 */}
           <button
             onClick={handleOpen}
-            className="text-darkgrey01 font-med14 cursor-pointer
+            className="text-darkgrey01 text-med14 cursor-pointer
               border border-grey10 rounded-[39px] px-5 py-[6px]"
           >
             {" "}
@@ -185,7 +192,7 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
             }}
             onClick={e => e.stopPropagation()}
           >
-            <p className="font-med16 text-center mb-6">경매 시간 입력</p>
+            <p className="text-med16 text-center mb-6">경매 시간 입력</p>
 
             {/* Wheel 3개 */}
             <div className="flex justify-center gap-6 mb-6">
@@ -207,14 +214,14 @@ const DurationSelector = ({ value, onChange, options }: Props) => {
             </div>
 
             {/* 종료 예정 시간 */}
-            <p className="text-center text-orange01 font-reg14 mb-6">
+            <p className="text-center text-orange01 text-reg14 mb-6">
               {calcEndTime()} 에 경매가 종료돼요.
             </p>
 
             {/* 저장 */}
             <button
               onClick={handleSave}
-              className="w-full bg-mainpink text-white py-3 rounded-[8px] font-med18 cursor-pointer"
+              className="w-full bg-mainpink text-white py-3 rounded-[8px] text-med18 cursor-pointer"
             >
               저장
             </button>

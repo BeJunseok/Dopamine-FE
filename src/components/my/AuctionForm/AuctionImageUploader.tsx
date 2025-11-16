@@ -42,7 +42,7 @@ const AuctionImageUploader = ({ images, setImages }: Props) => {
           ) : i === 0 ? (
             <div className="flex flex-col items-center text-darkgrey03">
               <Camera className="mb-2" />
-              <span className="text-bluegrey08 font-med12">사진 추가</span>
+              <span className="text-bluegrey08 text-med12">사진 추가</span>
             </div>
           ) : (
             <NewPlus className="text-bluegrey03" />

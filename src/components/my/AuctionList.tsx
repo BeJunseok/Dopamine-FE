@@ -60,10 +60,10 @@ const AuctionList = ({
 
               {/* 오른쪽 상품 정보 */}
               <div className="flex flex-col flex-1 justify-center">
-                <p className="font-reg14 text-darkgrey05 mb-[2px]">
+                <p className="text-reg14 text-darkgrey05 mb-[2px]">
                   {item.title}
                 </p>
-                <p className="font-reg12 text-darkgrey01 mb-[6px]">
+                <p className="text-reg12 text-darkgrey01 mb-[6px]">
                   {activeTab === "ongoing"
                     ? `최고가: ₩${item.price.toLocaleString()}`
                     : `최종가: ₩${item.price.toLocaleString()}`}
@@ -72,7 +72,7 @@ const AuctionList = ({
                 {/* 경매중 배지 + 시간*/}
                 <div className="flex items-center justify-between">
                   <span
-                    className={`px-2 py-[2px] rounded-full font-reg12 ${
+                    className={`px-2 py-[2px] rounded-full text-reg12 ${
                       activeTab === "ongoing"
                         ? "bg-lightorange01 text-orange01"
                         : "bg-grey01 text-darkgrey04"
@@ -80,7 +80,7 @@ const AuctionList = ({
                   >
                     {item.status}
                   </span>
-                  <p className="font-reg12 text-darkgrey02 whitespace-nowrap">
+                  <p className="text-reg12 text-darkgrey02 whitespace-nowrap">
                     {activeTab === "ongoing"
                       ? formatTimeLeft(item.timeLeft)
                       : "거래 완료"}
